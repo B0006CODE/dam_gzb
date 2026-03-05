@@ -1,0 +1,626 @@
+{"category": "occurs_in_bidirectional", "entity_a": "坝肩", "entity_b": "土石坝", "line_numbers_a_to_b": [9609], "line_numbers_b_to_a": [3599]}
+{"category": "occurs_in_bidirectional", "entity_a": "冲坑", "entity_b": "坝坡", "line_numbers_a_to_b": [859], "line_numbers_b_to_a": [8734]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝肩", "entity_b": "沉降", "line_numbers_a_to_b": [9612], "line_numbers_b_to_a": [14325]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "渗流异常", "line_numbers_a_to_b": [4688], "line_numbers_b_to_a": [15653]}
+{"category": "occurs_in_bidirectional", "entity_a": "断裂", "entity_b": "金属结构", "line_numbers_a_to_b": [13618], "line_numbers_b_to_a": [21256]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "结构老化", "line_numbers_a_to_b": [4694], "line_numbers_b_to_a": [18688]}
+{"category": "occurs_in_bidirectional", "entity_a": "防浪墙缺失", "entity_b": "坝顶", "line_numbers_a_to_b": [22283], "line_numbers_b_to_a": [9949]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "散浸", "line_numbers_a_to_b": [4682], "line_numbers_b_to_a": [13563]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "浸润线异常", "line_numbers_a_to_b": [4686], "line_numbers_b_to_a": [15105]}
+{"category": "occurs_in_bidirectional", "entity_a": "冲刷", "entity_b": "输水建筑物", "line_numbers_a_to_b": [630], "line_numbers_b_to_a": [19744]}
+{"category": "occurs_in_bidirectional", "entity_a": "路况差", "entity_b": "防汛公路", "line_numbers_a_to_b": [19654], "line_numbers_b_to_a": [21867]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "防渗体破坏", "line_numbers_a_to_b": [4703], "line_numbers_b_to_a": [22313]}
+{"category": "occurs_in_bidirectional", "entity_a": "输水管道", "entity_b": "渗漏", "line_numbers_a_to_b": [20145], "line_numbers_b_to_a": [16044]}
+{"category": "occurs_in_bidirectional", "entity_a": "沉陷", "entity_b": "坝肩", "line_numbers_a_to_b": [14396], "line_numbers_b_to_a": [9613]}
+{"category": "occurs_in_bidirectional", "entity_a": "变形", "entity_b": "金属结构", "line_numbers_a_to_b": [1372], "line_numbers_b_to_a": [21239]}
+{"category": "occurs_in_bidirectional", "entity_a": "开裂", "entity_b": "坝坡", "line_numbers_a_to_b": [11399], "line_numbers_b_to_a": [8737]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝肩", "entity_b": "绕坝渗漏", "line_numbers_a_to_b": [9615], "line_numbers_b_to_a": [18826]}
+{"category": "occurs_in_bidirectional", "entity_a": "冲坑", "entity_b": "坝体", "line_numbers_a_to_b": [858], "line_numbers_b_to_a": [4670]}
+{"category": "occurs_in_bidirectional", "entity_a": "变形", "entity_b": "坝体", "line_numbers_a_to_b": [1366], "line_numbers_b_to_a": [4671]}
+{"category": "occurs_in_bidirectional", "entity_a": "金属结构", "entity_b": "腐蚀", "line_numbers_a_to_b": [21267], "line_numbers_b_to_a": [19021]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "渗漏", "line_numbers_a_to_b": [4689], "line_numbers_b_to_a": [15901]}
+{"category": "occurs_in_bidirectional", "entity_a": "渗漏", "entity_b": "坝肩", "line_numbers_a_to_b": [15765], "line_numbers_b_to_a": [9614]}
+{"category": "occurs_in_bidirectional", "entity_a": "金属结构", "entity_b": "磨损", "line_numbers_a_to_b": [21262], "line_numbers_b_to_a": [17873]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝顶", "entity_b": "开裂", "line_numbers_a_to_b": [9943], "line_numbers_b_to_a": [11350]}
+{"category": "occurs_in_bidirectional", "entity_a": "监测设施不完善", "entity_b": "安全监测系统", "line_numbers_a_to_b": [17709], "line_numbers_b_to_a": [10712]}
+{"category": "occurs_in_bidirectional", "entity_a": "冲坑", "entity_b": "溢洪道", "line_numbers_a_to_b": [882], "line_numbers_b_to_a": [16641]}
+{"category": "occurs_in_bidirectional", "entity_a": "开裂", "entity_b": "坝体", "line_numbers_a_to_b": [11398], "line_numbers_b_to_a": [4678]}
+{"category": "occurs_in_bidirectional", "entity_a": "渗漏", "entity_b": "输水涵管", "line_numbers_a_to_b": [16041], "line_numbers_b_to_a": [20068]}
+{"category": "occurs_in_bidirectional", "entity_a": "破损", "entity_b": "防汛公路", "line_numbers_a_to_b": [17815], "line_numbers_b_to_a": [21866]}
+{"category": "occurs_in_bidirectional", "entity_a": "输水隧洞", "entity_b": "气蚀", "line_numbers_a_to_b": [20335], "line_numbers_b_to_a": [14184]}
+{"category": "occurs_in_bidirectional", "entity_a": "交叉建筑物", "entity_b": "渗漏", "line_numbers_a_to_b": [106], "line_numbers_b_to_a": [15880]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "混凝土碳化", "line_numbers_a_to_b": [4687], "line_numbers_b_to_a": [15435]}
+{"category": "occurs_in_bidirectional", "entity_a": "输水建筑物", "entity_b": "裂缝", "line_numbers_a_to_b": [19746], "line_numbers_b_to_a": [19201]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "沉降", "line_numbers_a_to_b": [4683], "line_numbers_b_to_a": [14322]}
+{"category": "occurs_in_bidirectional", "entity_a": "金属结构", "entity_b": "老化", "line_numbers_a_to_b": [21264], "line_numbers_b_to_a": [18929]}
+{"category": "occurs_in_bidirectional", "entity_a": "结构不安全", "entity_b": "溢洪道", "line_numbers_a_to_b": [18242], "line_numbers_b_to_a": [16648]}
+{"category": "occurs_in_bidirectional", "entity_a": "失稳", "entity_b": "坝肩", "line_numbers_a_to_b": [10449], "line_numbers_b_to_a": [9610]}
+{"category": "occurs_in_bidirectional", "entity_a": "开裂", "entity_b": "溢洪道", "line_numbers_a_to_b": [11442], "line_numbers_b_to_a": [16642]}
+{"category": "occurs_in_bidirectional", "entity_a": "蚁害", "entity_b": "坝坡", "line_numbers_a_to_b": [19091], "line_numbers_b_to_a": [8742]}
+{"category": "occurs_in_bidirectional", "entity_a": "失稳", "entity_b": "坝体", "line_numbers_a_to_b": [10445], "line_numbers_b_to_a": [4676]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝基", "entity_b": "渗漏", "line_numbers_a_to_b": [9229], "line_numbers_b_to_a": [15764]}
+{"category": "occurs_in_bidirectional", "entity_a": "冲刷", "entity_b": "坝坡", "line_numbers_a_to_b": [560], "line_numbers_b_to_a": [8733]}
+{"category": "occurs_in_bidirectional", "entity_a": "位移", "entity_b": "坝体", "line_numbers_a_to_b": [347], "line_numbers_b_to_a": [4666]}
+{"category": "occurs_in_bidirectional", "entity_a": "监测设施缺失", "entity_b": "安全监测系统", "line_numbers_a_to_b": [17742], "line_numbers_b_to_a": [10713]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝体", "entity_b": "裂缝扩展", "line_numbers_a_to_b": [4699], "line_numbers_b_to_a": [19293]}
+{"category": "occurs_in_bidirectional", "entity_a": "输水管道", "entity_b": "裂缝", "line_numbers_a_to_b": [20146], "line_numbers_b_to_a": [19205]}
+{"category": "occurs_in_bidirectional", "entity_a": "土石坝", "entity_b": "坝坡", "line_numbers_a_to_b": [3597], "line_numbers_b_to_a": [8735]}
+{"category": "occurs_in_bidirectional", "entity_a": "金属结构", "entity_b": "启闭设备老化", "line_numbers_a_to_b": [21244], "line_numbers_b_to_a": [1691]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝肩", "entity_b": "开裂", "line_numbers_a_to_b": [9611], "line_numbers_b_to_a": [11401]}
+{"category": "occurs_in_bidirectional", "entity_a": "溢洪道", "entity_b": "冲刷", "line_numbers_a_to_b": [16640], "line_numbers_b_to_a": [612]}
+{"category": "occurs_in_bidirectional", "entity_a": "冲刷", "entity_b": "坝体", "line_numbers_a_to_b": [558], "line_numbers_b_to_a": [4669]}
+{"category": "occurs_in_bidirectional", "entity_a": "土石坝", "entity_b": "坝体", "line_numbers_a_to_b": [3596], "line_numbers_b_to_a": [4672]}
+{"category": "occurs_in_bidirectional", "entity_a": "心墙破坏", "entity_b": "坝体", "line_numbers_a_to_b": [11656], "line_numbers_b_to_a": [4679]}
+{"category": "occurs_in_bidirectional", "entity_a": "渗漏", "entity_b": "溢洪道", "line_numbers_a_to_b": [15994], "line_numbers_b_to_a": [16647]}
+{"category": "occurs_in_bidirectional", "entity_a": "锈蚀", "entity_b": "金属结构", "line_numbers_a_to_b": [21640], "line_numbers_b_to_a": [21271]}
+{"category": "occurs_in_bidirectional", "entity_a": "安全监测系统", "entity_b": "监测不足", "line_numbers_a_to_b": [10711], "line_numbers_b_to_a": [17612]}
+{"category": "occurs_in_bidirectional", "entity_a": "裂缝", "entity_b": "坝体", "line_numbers_a_to_b": [19175], "line_numbers_b_to_a": [4695]}
+{"category": "occurs_in_bidirectional", "entity_a": "不均匀沉降", "entity_b": "坝体", "line_numbers_a_to_b": [44], "line_numbers_b_to_a": [4665]}
+{"category": "occurs_in_bidirectional", "entity_a": "金属结构", "entity_b": "失灵", "line_numbers_a_to_b": [21249], "line_numbers_b_to_a": [10399]}
+{"category": "occurs_in_bidirectional", "entity_a": "安全监测系统", "entity_b": "缺失", "line_numbers_a_to_b": [10714], "line_numbers_b_to_a": [18892]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝坡", "entity_b": "排水体失效", "line_numbers_a_to_b": [8740], "line_numbers_b_to_a": [12952]}
+{"category": "occurs_in_bidirectional", "entity_a": "裂缝渗漏", "entity_b": "坝体", "line_numbers_a_to_b": [19319], "line_numbers_b_to_a": [4701]}
+{"category": "occurs_in_bidirectional", "entity_a": "消能设施缺失", "entity_b": "溢洪道", "line_numbers_a_to_b": [15221], "line_numbers_b_to_a": [16646]}
+{"category": "occurs_in_bidirectional", "entity_a": "防汛公路", "entity_b": "标准低", "line_numbers_a_to_b": [21865], "line_numbers_b_to_a": [14085]}
+{"category": "occurs_in_bidirectional", "entity_a": "土石坝", "entity_b": "坝基", "line_numbers_a_to_b": [3598], "line_numbers_b_to_a": [9228]}
+{"category": "occurs_in_bidirectional", "entity_a": "运行管理不足", "entity_b": "安全监测系统", "line_numbers_a_to_b": [20554], "line_numbers_b_to_a": [10716]}
+{"category": "occurs_in_bidirectional", "entity_a": "坝顶", "entity_b": "土石坝", "line_numbers_a_to_b": [9942], "line_numbers_b_to_a": [3600]}
+{"category": "occurs_in_bidirectional", "entity_a": "结合面破坏", "entity_b": "坝体", "line_numbers_a_to_b": [18226], "line_numbers_b_to_a": [4693]}
+{"category": "pair_multi_relation_conflict", "h": "人员培训不足", "t": "人员培训", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [322], "处置措施": [325]}}
+{"category": "pair_multi_relation_conflict", "h": "冲刷", "t": "护坡", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [573], "处置措施": [686]}}
+{"category": "pair_multi_relation_conflict", "h": "冲刷", "t": "护坦", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [575], "处置措施": [693]}}
+{"category": "pair_multi_relation_conflict", "h": "冲刷", "t": "排水沟", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [579], "处置措施": [718]}}
+{"category": "pair_multi_relation_conflict", "h": "冲刷", "t": "消力池", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [607], "处置措施": [735]}}
+{"category": "pair_multi_relation_conflict", "h": "冲刷", "t": "混凝土护坡", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [609], "处置措施": [761]}}
+{"category": "pair_multi_relation_conflict", "h": "冲坑", "t": "消能设施", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [881], "处置措施": [924]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "不均匀沉降", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [7770], "发生于": [4665], "常见缺陷": [4356]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "变形", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [7793], "发生于": [4671], "常见缺陷": [4376]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "心墙破坏", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [7839], "发生于": [4679], "常见缺陷": [4422]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "沉降", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [7892], "发生于": [4683], "常见缺陷": [4503]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "渗漏", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [7904], "发生于": [4689], "常见缺陷": [4528]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "裂缝", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [7955], "发生于": [4695], "常见缺陷": [4556]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "护坡", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [4680], "处置措施": [5922]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "结合面破坏", "relations": ["典型病因", "发生于"], "line_numbers": {"典型病因": [7945], "发生于": [4693]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "结构老化", "relations": ["典型病因", "发生于"], "line_numbers": {"典型病因": [7947], "发生于": [4694]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "防浪墙", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [4702], "处置措施": [7466]}}
+{"category": "pair_multi_relation_conflict", "h": "坝体", "t": "防渗体破坏", "relations": ["典型病因", "发生于"], "line_numbers": {"典型病因": [7974], "发生于": [4703]}}
+{"category": "pair_multi_relation_conflict", "h": "坝坡", "t": "冲刷", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [8985], "发生于": [8733], "常见缺陷": [8699]}}
+{"category": "pair_multi_relation_conflict", "h": "坝坡", "t": "冲坑", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [8986], "发生于": [8734], "常见缺陷": [8700]}}
+{"category": "pair_multi_relation_conflict", "h": "坝坡", "t": "护坡", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [8738], "处置措施": [8838]}}
+{"category": "pair_multi_relation_conflict", "h": "坝肩", "t": "绕坝渗漏", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [9796], "发生于": [9615], "常见缺陷": [9571]}}
+{"category": "pair_multi_relation_conflict", "h": "坝顶", "t": "高程不足", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [10147], "发生于": [9950], "常见缺陷": [9934]}}
+{"category": "pair_multi_relation_conflict", "h": "坝顶", "t": "防浪墙", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [9945], "处置措施": [10098]}}
+{"category": "pair_multi_relation_conflict", "h": "安全监测系统", "t": "监测设施不完善", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [10870], "发生于": [10712], "常见缺陷": [10670]}}
+{"category": "pair_multi_relation_conflict", "h": "安全监测系统", "t": "监测设施缺失", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [10872], "发生于": [10713], "常见缺陷": [10675]}}
+{"category": "pair_multi_relation_conflict", "h": "安全监测系统", "t": "缺失", "relations": ["典型病因", "典型缺陷", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [10875], "典型缺陷": [10883], "发生于": [10714], "常见缺陷": [10677]}}
+{"category": "pair_multi_relation_conflict", "h": "安全监测系统", "t": "运行管理不足", "relations": ["主要病因", "典型病因", "发生于"], "line_numbers": {"主要病因": [10706], "典型病因": [10882], "发生于": [10716]}}
+{"category": "pair_multi_relation_conflict", "h": "排水不畅", "t": "排水沟", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [12881], "处置措施": [12902]}}
+{"category": "pair_multi_relation_conflict", "h": "排水失效", "t": "排水沟", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [13000], "处置措施": [13016]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "防渗墙", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [16059], "处置措施": [15767]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "反滤层", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [15892], "处置措施": [16092]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "护坡", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [15950], "处置措施": [16149]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "排水", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [15956], "处置措施": [16151]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "排水孔", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [15958], "处置措施": [16162]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "排水棱体", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [15959], "处置措施": [16170]}}
+{"category": "pair_multi_relation_conflict", "h": "渗漏", "t": "排水系统", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [15960], "处置措施": [16184]}}
+{"category": "pair_multi_relation_conflict", "h": "溢洪道", "t": "冲刷", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [16884], "发生于": [16640], "常见缺陷": [16519]}}
+{"category": "pair_multi_relation_conflict", "h": "溢洪道", "t": "消能设施缺失", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [16909], "发生于": [16646], "常见缺陷": [16558]}}
+{"category": "pair_multi_relation_conflict", "h": "金属结构", "t": "启闭设备老化", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [21450], "发生于": [21244], "常见缺陷": [21176]}}
+{"category": "pair_multi_relation_conflict", "h": "金属结构", "t": "腐蚀", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [21459], "发生于": [21267], "常见缺陷": [21204]}}
+{"category": "pair_multi_relation_conflict", "h": "金属结构", "t": "锈蚀", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [21468], "发生于": [21271], "常见缺陷": [21210]}}
+{"category": "pair_multi_relation_conflict", "h": "金属结构", "t": "启闭机房", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [21241], "处置措施": [21302]}}
+{"category": "pair_multi_relation_conflict", "h": "防汛公路", "t": "标准低", "relations": ["典型病因", "发生于", "常见缺陷"], "line_numbers": {"典型病因": [21970], "发生于": [21865], "常见缺陷": [21848]}}
+{"category": "pair_multi_relation_conflict", "h": "防汛物资不足", "t": "防汛物资储备", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [22064], "处置措施": [22071]}}
+{"category": "pair_multi_relation_conflict", "h": "附属设施", "t": "防汛公路", "relations": ["发生于", "处置措施"], "line_numbers": {"发生于": [22419], "处置措施": [22552]}}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22, "h": "下游坝坡", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 23, "h": "下游坝坡", "r": "典型病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 39, "h": "不均匀沉降", "r": "主要病因", "t": "地基处理不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 53, "h": "不均匀沉降", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 90, "h": "中孔", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 116, "h": "交通不便", "r": "主要病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 219, "h": "交通设施不足", "r": "主要病因", "t": "建设标准低", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 320, "h": "人员培训不足", "r": "主要病因", "t": "人员培训不到位", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 484, "h": "冒水翻砂", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 512, "h": "冲刷", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 522, "h": "冲刷", "r": "主要病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 534, "h": "冲刷", "r": "主要病因", "t": "消能设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 678, "h": "冲刷", "r": "处置措施", "t": "抗冲刷加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 679, "h": "冲刷", "r": "处置措施", "t": "抗冲刷材料应用", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 842, "h": "冲坑", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1055, "h": "出逸坡降不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1058, "h": "出逸坡降超标", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1089, "h": "副坝", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1097, "h": "副坝坝基", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1341, "h": "取水建筑物", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1376, "h": "变形", "r": "处置措施", "t": "变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1377, "h": "变形", "r": "处置措施", "t": "变形观测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1390, "h": "变形", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1399, "h": "变形异常", "r": "处置措施", "t": "变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1490, "h": "启闭机", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1532, "h": "启闭机房", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1630, "h": "启闭设备", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 1664, "h": "启闭设备故障", "r": "主要病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3714, "h": "土石坝", "r": "处置措施", "t": "坝体变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3790, "h": "土石坝", "r": "处置措施", "t": "坝体接触渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3796, "h": "土石坝", "r": "处置措施", "t": "坝体沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3814, "h": "土石坝", "r": "处置措施", "t": "坝体渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3827, "h": "土石坝", "r": "处置措施", "t": "坝体老化处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3830, "h": "土石坝", "r": "处置措施", "t": "坝体裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3831, "h": "土石坝", "r": "处置措施", "t": "坝体裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3832, "h": "土石坝", "r": "处置措施", "t": "坝体裂缝监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3848, "h": "土石坝", "r": "处置措施", "t": "坝基浅层渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3875, "h": "土石坝", "r": "处置措施", "t": "处理冲刷", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3877, "h": "土石坝", "r": "处置措施", "t": "处理功能性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3878, "h": "土石坝", "r": "处置措施", "t": "处理可持续性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3879, "h": "土石坝", "r": "处置措施", "t": "处理可靠性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3880, "h": "土石坝", "r": "处置措施", "t": "处理土质问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3881, "h": "土石坝", "r": "处置措施", "t": "处理地质问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3882, "h": "土石坝", "r": "处置措施", "t": "处理基础处理不完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3883, "h": "土石坝", "r": "处置措施", "t": "处理复杂问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3884, "h": "土石坝", "r": "处置措施", "t": "处理多因素问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3885, "h": "土石坝", "r": "处置措施", "t": "处理多层面问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3886, "h": "土石坝", "r": "处置措施", "t": "处理多维度问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3887, "h": "土石坝", "r": "处置措施", "t": "处理多角度问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3889, "h": "土石坝", "r": "处置措施", "t": "处理失效", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3890, "h": "土石坝", "r": "处置措施", "t": "处理失稳", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3891, "h": "土石坝", "r": "处置措施", "t": "处理安全性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3892, "h": "土石坝", "r": "处置措施", "t": "处理技术性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3893, "h": "土石坝", "r": "处置措施", "t": "处理施工质量问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3894, "h": "土石坝", "r": "处置措施", "t": "处理材料老化", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3895, "h": "土石坝", "r": "处置措施", "t": "处理气候问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3896, "h": "土石坝", "r": "处置措施", "t": "处理渗漏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3897, "h": "土石坝", "r": "处置措施", "t": "处理环境性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3898, "h": "土石坝", "r": "处置措施", "t": "处理环境问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3899, "h": "土石坝", "r": "处置措施", "t": "处理生态性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3900, "h": "土石坝", "r": "处置措施", "t": "处理社会性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3901, "h": "土石坝", "r": "处置措施", "t": "处理管理性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3902, "h": "土石坝", "r": "处置措施", "t": "处理系统性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3903, "h": "土石坝", "r": "处置措施", "t": "处理经济性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3904, "h": "土石坝", "r": "处置措施", "t": "处理结构性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3905, "h": "土石坝", "r": "处置措施", "t": "处理维护性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3906, "h": "土石坝", "r": "处置措施", "t": "处理综合性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3907, "h": "土石坝", "r": "处置措施", "t": "处理综合问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3908, "h": "土石坝", "r": "处置措施", "t": "处理耐久性问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3909, "h": "土石坝", "r": "处置措施", "t": "处理裂缝", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3910, "h": "土石坝", "r": "处置措施", "t": "处理设计标准偏低", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 3912, "h": "土石坝", "r": "处置措施", "t": "处理运行管理不足", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4076, "h": "土石坝", "r": "处置措施", "t": "抗冲刷加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4079, "h": "土石坝", "r": "处置措施", "t": "抗变形处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4080, "h": "土石坝", "r": "处置措施", "t": "抗沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4085, "h": "土石坝", "r": "处置措施", "t": "抗渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4092, "h": "土石坝", "r": "处置措施", "t": "抗老化处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4122, "h": "土石坝", "r": "处置措施", "t": "接触冲刷防护", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4228, "h": "土石坝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4229, "h": "土石坝", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4230, "h": "土石坝", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4288, "h": "土石坝", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4716, "h": "坝体", "r": "处置措施", "t": "不均匀沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4873, "h": "坝体", "r": "处置措施", "t": "加固坝体变形部位", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4874, "h": "坝体", "r": "处置措施", "t": "加固坝体损坏部位", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4876, "h": "坝体", "r": "处置措施", "t": "加固坝体渗漏部位", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4878, "h": "坝体", "r": "处置措施", "t": "加固坝体缺陷部位", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4879, "h": "坝体", "r": "处置措施", "t": "加固坝体老化部位", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4881, "h": "坝体", "r": "处置措施", "t": "加固坝体裂缝", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 4882, "h": "坝体", "r": "处置措施", "t": "加固坝体裂缝部位", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5023, "h": "坝体", "r": "处置措施", "t": "变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5024, "h": "坝体", "r": "处置措施", "t": "变形监测系统", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5025, "h": "坝体", "r": "处置措施", "t": "变形监测系统安装", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5026, "h": "坝体", "r": "处置措施", "t": "变形观测实施", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5027, "h": "坝体", "r": "处置措施", "t": "变形观测设施完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5076, "h": "坝体", "r": "处置措施", "t": "启闭设备防失效", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5079, "h": "坝体", "r": "处置措施", "t": "启闭设备防损坏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5086, "h": "坝体", "r": "处置措施", "t": "启闭设备防破坏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5088, "h": "坝体", "r": "处置措施", "t": "启闭设备防老化", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5097, "h": "坝体", "r": "处置措施", "t": "启闭设备防被失效", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5099, "h": "坝体", "r": "处置措施", "t": "启闭设备防被损坏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5104, "h": "坝体", "r": "处置措施", "t": "启闭设备防被破坏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5106, "h": "坝体", "r": "处置措施", "t": "启闭设备防被老化", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5157, "h": "坝体", "r": "处置措施", "t": "地基变形分析", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5158, "h": "坝体", "r": "处置措施", "t": "地基变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5217, "h": "坝体", "r": "处置措施", "t": "坝体变形修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5218, "h": "坝体", "r": "处置措施", "t": "坝体变形加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5219, "h": "坝体", "r": "处置措施", "t": "坝体变形处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5227, "h": "坝体", "r": "处置措施", "t": "坝体失稳修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5228, "h": "坝体", "r": "处置措施", "t": "坝体失稳加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5229, "h": "坝体", "r": "处置措施", "t": "坝体失稳处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5235, "h": "坝体", "r": "处置措施", "t": "坝体损坏修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5236, "h": "坝体", "r": "处置措施", "t": "坝体损坏加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5237, "h": "坝体", "r": "处置措施", "t": "坝体损坏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5254, "h": "坝体", "r": "处置措施", "t": "坝体沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5255, "h": "坝体", "r": "处置措施", "t": "坝体沉降监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5256, "h": "坝体", "r": "处置措施", "t": "坝体渗漏修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5257, "h": "坝体", "r": "处置措施", "t": "坝体渗漏加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5258, "h": "坝体", "r": "处置措施", "t": "坝体渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5269, "h": "坝体", "r": "处置措施", "t": "坝体老化修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5270, "h": "坝体", "r": "处置措施", "t": "坝体老化加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5271, "h": "坝体", "r": "处置措施", "t": "坝体老化处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5276, "h": "坝体", "r": "处置措施", "t": "坝体裂缝修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5277, "h": "坝体", "r": "处置措施", "t": "坝体裂缝加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5278, "h": "坝体", "r": "处置措施", "t": "坝体裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5279, "h": "坝体", "r": "处置措施", "t": "坝体裂缝监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5280, "h": "坝体", "r": "处置措施", "t": "坝体裂缝监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5359, "h": "坝体", "r": "处置措施", "t": "增加变形观测点", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5425, "h": "坝体", "r": "处置措施", "t": "增加沉降观测点", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5877, "h": "坝体", "r": "处置措施", "t": "抗冲刷处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5903, "h": "坝体", "r": "处置措施", "t": "抗老化处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 5952, "h": "坝体", "r": "处置措施", "t": "挖除隐患结构", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6089, "h": "坝体", "r": "处置措施", "t": "接触冲刷防治", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6148, "h": "坝体", "r": "处置措施", "t": "改造安全隐患", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6170, "h": "坝体", "r": "处置措施", "t": "改造渗透破坏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6182, "h": "坝体", "r": "处置措施", "t": "改造裂缝", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6191, "h": "坝体", "r": "处置措施", "t": "改造问题发现", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6546, "h": "坝体", "r": "处置措施", "t": "施工质量缺陷处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6672, "h": "坝体", "r": "处置措施", "t": "沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6673, "h": "坝体", "r": "处置措施", "t": "沉降控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6674, "h": "坝体", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6675, "h": "坝体", "r": "处置措施", "t": "沉降监测系统安装", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6676, "h": "坝体", "r": "处置措施", "t": "沉降监测设备安装", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6677, "h": "坝体", "r": "处置措施", "t": "沉降缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6678, "h": "坝体", "r": "处置措施", "t": "沉降观测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6679, "h": "坝体", "r": "处置措施", "t": "沉降观测设施增设", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6680, "h": "坝体", "r": "处置措施", "t": "沉降观测设施完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6783, "h": "坝体", "r": "处置措施", "t": "渗漏观测设施", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6784, "h": "坝体", "r": "处置措施", "t": "渗透变形防治", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 6787, "h": "坝体", "r": "处置措施", "t": "渗透破坏预防", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7040, "h": "坝体", "r": "处置措施", "t": "表面变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7045, "h": "坝体", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7046, "h": "坝体", "r": "处置措施", "t": "裂缝回填处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7047, "h": "坝体", "r": "处置措施", "t": "裂缝填充", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7048, "h": "坝体", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7049, "h": "坝体", "r": "处置措施", "t": "裂缝封闭", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7050, "h": "坝体", "r": "处置措施", "t": "裂缝注浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7051, "h": "坝体", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7052, "h": "坝体", "r": "处置措施", "t": "裂缝灌浆处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7053, "h": "坝体", "r": "处置措施", "t": "裂缝监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7054, "h": "坝体", "r": "处置措施", "t": "裂缝监测系统安装", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7135, "h": "坝体", "r": "处置措施", "t": "设计缺陷修正", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7265, "h": "坝体", "r": "处置措施", "t": "输水涵管管壁抗老化处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7737, "h": "坝体", "r": "处置措施", "t": "隐患处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7738, "h": "坝体", "r": "处置措施", "t": "隐患排查实施", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7811, "h": "坝体", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7847, "h": "坝体", "r": "典型病因", "t": "抗震措施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7853, "h": "坝体", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7860, "h": "坝体", "r": "典型病因", "t": "接缝处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7867, "h": "坝体", "r": "典型病因", "t": "施工接缝处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7926, "h": "坝体", "r": "典型病因", "t": "监测不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7927, "h": "坝体", "r": "典型病因", "t": "监测系统缺失", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7928, "h": "坝体", "r": "典型病因", "t": "监测设施不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7944, "h": "坝体", "r": "典型病因", "t": "结合部处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 7950, "h": "坝体", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8025, "h": "坝体与基岩接触渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8059, "h": "坝体两端", "r": "典型病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8062, "h": "坝体位移", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8131, "h": "坝体变形", "r": "处置措施", "t": "变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8140, "h": "坝体变形", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8178, "h": "坝体延性变形", "r": "处置措施", "t": "变形控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8189, "h": "坝体扬压力超标", "r": "主要病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8365, "h": "坝体施工缺陷", "r": "处置措施", "t": "缺陷修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8384, "h": "坝体沉降", "r": "主要病因", "t": "地基处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8385, "h": "坝体沉降", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8401, "h": "坝体沉降", "r": "处置措施", "t": "沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8402, "h": "坝体沉降", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8403, "h": "坝体沉降", "r": "处置措施", "t": "沉降观测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8405, "h": "坝体沉降不均", "r": "主要病因", "t": "地基处理不均", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8409, "h": "坝体沉降监测不足", "r": "处置措施", "t": "增加沉降监测点", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8410, "h": "坝体沉降缝", "r": "处置措施", "t": "沉降缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8450, "h": "坝体渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8460, "h": "坝体渗透压力过高", "r": "主要病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8465, "h": "坝体渗透变形", "r": "处置措施", "t": "变形控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8478, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8479, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏加固", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8480, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8481, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏治理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8482, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8483, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏防治", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8484, "h": "坝体渗透破坏", "r": "处置措施", "t": "渗透破坏预警", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8516, "h": "坝体滑动", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8578, "h": "坝体脆性变形", "r": "处置措施", "t": "变形修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8579, "h": "坝体脆性变形", "r": "处置措施", "t": "变形监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8596, "h": "坝体裂缝", "r": "主要病因", "t": "施工接缝处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8615, "h": "坝体裂缝", "r": "处置措施", "t": "基础沉降控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8624, "h": "坝体裂缝", "r": "处置措施", "t": "收缩变形控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8638, "h": "坝体裂缝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8639, "h": "坝体裂缝", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8640, "h": "坝体裂缝", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8642, "h": "坝体裂缝", "r": "处置措施", "t": "质量缺陷修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8651, "h": "坝体裂缝扩展", "r": "处置措施", "t": "裂缝扩展处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8652, "h": "坝体裂缝扩展", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8653, "h": "坝体裂缝监测不足", "r": "处置措施", "t": "增加裂缝监测点", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8660, "h": "坝体连接部位", "r": "典型病因", "t": "施工接缝处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8693, "h": "坝后散浸", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8788, "h": "坝坡", "r": "处置措施", "t": "坝坡沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8789, "h": "坝坡", "r": "处置措施", "t": "坝坡沉降监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8790, "h": "坝坡", "r": "处置措施", "t": "坝坡裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8791, "h": "坝坡", "r": "处置措施", "t": "坝坡裂缝监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8921, "h": "坝坡", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8958, "h": "坝坡", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 8997, "h": "坝坡", "r": "典型病因", "t": "反滤排水不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9005, "h": "坝坡", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9026, "h": "坝坡", "r": "典型病因", "t": "护坡维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9032, "h": "坝坡", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9036, "h": "坝坡", "r": "典型病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9059, "h": "坝坡", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9060, "h": "坝坡", "r": "典型病因", "t": "维护缺失", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9371, "h": "坝基", "r": "处置措施", "t": "沉降控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9466, "h": "坝基", "r": "典型病因", "t": "地基处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9478, "h": "坝基", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9482, "h": "坝基", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9485, "h": "坝基", "r": "典型病因", "t": "接触面处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9513, "h": "坝基", "r": "典型病因", "t": "防渗处理不彻底", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9530, "h": "坝基扬压力超标", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9533, "h": "坝基接触带渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9537, "h": "坝基渗流量偏大", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9540, "h": "坝基渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9552, "h": "坝基砂液化", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9606, "h": "坝肩", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9775, "h": "坝肩", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9783, "h": "坝肩", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9808, "h": "坝肩", "r": "典型病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9815, "h": "坝肩渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9852, "h": "坝脚", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9857, "h": "坝脚", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9859, "h": "坝脚", "r": "典型病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9881, "h": "坝趾", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9882, "h": "坝趾", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 9885, "h": "坝趾冲刷", "r": "主要病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10012, "h": "坝顶", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10045, "h": "坝顶", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10116, "h": "坝顶", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10118, "h": "坝顶", "r": "典型病因", "t": "建设标准低", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10129, "h": "坝顶", "r": "典型病因", "t": "监测频次不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10143, "h": "坝顶", "r": "典型病因", "t": "防浪墙维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10166, "h": "坝顶沉降", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10213, "h": "基础", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10245, "h": "基础沉降", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10250, "h": "基础沉陷", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10281, "h": "塌洞", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10287, "h": "塌陷", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10392, "h": "失效", "r": "处置措施", "t": "失效部件更换", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10422, "h": "失稳", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10428, "h": "失稳", "r": "主要病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10593, "h": "失稳", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10650, "h": "安全监测系统", "r": "处置措施", "t": "渗漏", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10651, "h": "安全监测系统", "r": "处置措施", "t": "结构失稳", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10751, "h": "安全监测系统", "r": "处置措施", "t": "安装裂缝计", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10801, "h": "安全监测系统", "r": "处置措施", "t": "沉降传感器", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10802, "h": "安全监测系统", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10803, "h": "安全监测系统", "r": "处置措施", "t": "沉降监测系统完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10804, "h": "安全监测系统", "r": "处置措施", "t": "沉降监测系统建设", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10843, "h": "安全监测系统", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10844, "h": "安全监测系统", "r": "处置措施", "t": "裂缝监测系统完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10845, "h": "安全监测系统", "r": "处置措施", "t": "裂缝监测系统建设", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10867, "h": "安全监测系统", "r": "典型病因", "t": "测报系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10869, "h": "安全监测系统", "r": "典型病因", "t": "监测点不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10870, "h": "安全监测系统", "r": "典型病因", "t": "监测设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10871, "h": "安全监测系统", "r": "典型病因", "t": "监测设施不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10872, "h": "安全监测系统", "r": "典型病因", "t": "监测设施缺失", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10873, "h": "安全监测系统", "r": "典型病因", "t": "监测设施老化", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10874, "h": "安全监测系统", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10980, "h": "富水区", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 10983, "h": "导墙", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11098, "h": "尾水渠", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11121, "h": "山体", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11137, "h": "岩质", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11309, "h": "应急预案不足", "r": "主要病因", "t": "应急预案不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11342, "h": "廊道", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11370, "h": "开裂", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11562, "h": "开裂", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11563, "h": "开裂", "r": "处置措施", "t": "裂缝回填", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11564, "h": "开裂", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11565, "h": "开裂", "r": "处置措施", "t": "裂缝封闭", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11566, "h": "开裂", "r": "处置措施", "t": "裂缝注浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11567, "h": "开裂", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11568, "h": "开裂", "r": "处置措施", "t": "裂缝补强", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11569, "h": "开裂", "r": "处置措施", "t": "设置变形缝", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11588, "h": "开裂破坏", "r": "处置措施", "t": "裂缝控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11589, "h": "开裂老化", "r": "处置措施", "t": "裂缝控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11651, "h": "心墙破坏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11713, "h": "扬压力异常", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11720, "h": "扬压力超标", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11785, "h": "抗冲刷不足", "r": "处置措施", "t": "抗冲刷材料应用", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 11979, "h": "抗沉降能力不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12002, "h": "抗渗性不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12011, "h": "抗渗能力不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12021, "h": "抗滑不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12116, "h": "抗滑稳定性不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12166, "h": "抗老化不足", "r": "处置措施", "t": "抗老化材料应用", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12169, "h": "抗老化强度不足", "r": "处置措施", "t": "抗老化材料应用", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12227, "h": "抗震不足", "r": "主要病因", "t": "抗震措施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12287, "h": "抗震安全隐患", "r": "主要病因", "t": "抗震设防措施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12831, "h": "挡水建筑物", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12848, "h": "损坏", "r": "处置措施", "t": "损坏修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12864, "h": "排水不畅", "r": "主要病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12943, "h": "排水体失效", "r": "主要病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 12983, "h": "排水失效", "r": "主要病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13051, "h": "排水棱体", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13286, "h": "接触冲刷", "r": "主要病因", "t": "防渗处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13298, "h": "接触带", "r": "典型病因", "t": "新老结合面处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13299, "h": "接触带", "r": "典型病因", "t": "施工接缝处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13310, "h": "接触渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13423, "h": "放水洞", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13553, "h": "散浸", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13554, "h": "散浸", "r": "主要病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13555, "h": "散浸", "r": "主要病因", "t": "排水设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13561, "h": "散浸", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13806, "h": "施工质量问题", "r": "处置措施", "t": "质量缺陷修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13858, "h": "无排水系统", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 13980, "h": "材料收缩", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14318, "h": "沉降", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14336, "h": "沉降", "r": "处置措施", "t": "沉降控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14337, "h": "沉降", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14338, "h": "沉降", "r": "处置措施", "t": "沉降观测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14344, "h": "沉降", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14353, "h": "沉降不均", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14357, "h": "沉降变形", "r": "主要病因", "t": "地基处理不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14359, "h": "沉降变形", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14376, "h": "沉降变形", "r": "处置措施", "t": "沉降观测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14379, "h": "沉降异常", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14388, "h": "沉陷", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14420, "h": "沉陷", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14439, "h": "沼泽化", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14475, "h": "泄槽段", "r": "典型病因", "t": "排水不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14570, "h": "泄水建筑物", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14577, "h": "泄水建筑物", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14710, "h": "泄洪洞", "r": "处置措施", "t": "渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14723, "h": "泄洪洞", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14745, "h": "泄洪洞", "r": "典型病因", "t": "无衬砌结构", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14752, "h": "泄洪洞", "r": "典型病因", "t": "衬砌不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14853, "h": "泄洪渠", "r": "典型病因", "t": "堤基清理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 14950, "h": "泄洪道", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15002, "h": "泄洪闸", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15118, "h": "浸润线过高", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15348, "h": "混凝土剥蚀", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15364, "h": "混凝土开裂", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15407, "h": "混凝土沉降裂缝", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15476, "h": "混凝土结构", "r": "处置措施", "t": "修复裂缝", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15591, "h": "渗流不满足", "r": "主要病因", "t": "防渗设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15595, "h": "渗流不稳定", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15628, "h": "渗流失稳", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15642, "h": "渗流安全隐患", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15647, "h": "渗流异常", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15650, "h": "渗流异常", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15669, "h": "渗流异常", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15682, "h": "渗流破坏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15686, "h": "渗流破坏", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15725, "h": "渗流破坏", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15741, "h": "渗流逸出", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15752, "h": "渗流量超标", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15763, "h": "渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 15871, "h": "渗漏", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16100, "h": "渗漏", "r": "处置措施", "t": "变形处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16219, "h": "渗漏", "r": "处置措施", "t": "沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16256, "h": "渗漏", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16319, "h": "渗漏", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16329, "h": "渗漏加剧", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16332, "h": "渗漏发展", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16335, "h": "渗漏扩散", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16343, "h": "渗漏通道", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16348, "h": "渗漏通道", "r": "处置措施", "t": "截断渗漏通道", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16357, "h": "渗漏集中", "r": "处置措施", "t": "集中渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16365, "h": "渗透变形", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16413, "h": "渗透破坏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16442, "h": "渗透破坏风险", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16446, "h": "渗透稳定不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16451, "h": "渗透稳定问题", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16508, "h": "湿坡", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16509, "h": "湿坡", "r": "主要病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16770, "h": "溢洪道", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16840, "h": "溢洪道", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16841, "h": "溢洪道", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16888, "h": "溢洪道", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16907, "h": "溢洪道", "r": "典型病因", "t": "消能设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16913, "h": "溢洪道", "r": "典型病因", "t": "清淤维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16922, "h": "溢洪道", "r": "典型病因", "t": "衬砌质量差", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16927, "h": "溢洪道", "r": "典型病因", "t": "进口段未衬砌", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16943, "h": "溢洪道底板", "r": "处置措施", "t": "修补裂缝", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 16974, "h": "溢洪道边坡", "r": "典型病因", "t": "土质边坡处理不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17001, "h": "溢流坝", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17118, "h": "漏水", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17164, "h": "漫浸", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17282, "h": "环向裂缝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17381, "h": "电力设施", "r": "典型病因", "t": "供电线路未建设", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17445, "h": "电气装置", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17610, "h": "监测不足", "r": "主要病因", "t": "监测设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17627, "h": "监测失效", "r": "主要病因", "t": "监测设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17642, "h": "监测数据缺失", "r": "主要病因", "t": "监测设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17812, "h": "破坏", "r": "处置措施", "t": "破坏修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17835, "h": "确权划界不明确", "r": "处置措施", "t": "解决确权问题", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17928, "h": "管壁", "r": "典型病因", "t": "接触面处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 17937, "h": "管涌", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18031, "h": "管理用房", "r": "典型病因", "t": "建设标准低", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18034, "h": "管理用房", "r": "典型病因", "t": "管理制度不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18150, "h": "管理设施老化", "r": "主要病因", "t": "建设标准低", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18360, "h": "结构变形", "r": "处置措施", "t": "变形控制措施", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18384, "h": "结构失稳", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18485, "h": "结构失稳", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18526, "h": "结构开裂", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18614, "h": "结构损坏", "r": "典型病因", "t": "基础处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18800, "h": "结构裂缝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18801, "h": "结构裂缝", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18823, "h": "绕坝渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18825, "h": "绕坝渗漏", "r": "主要病因", "t": "防渗体系不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18838, "h": "绕坝渗漏", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18840, "h": "绕渗", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18946, "h": "老化", "r": "处置措施", "t": "老化部件更换", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18964, "h": "老化开裂", "r": "处置措施", "t": "裂缝控制", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18985, "h": "背水坡", "r": "典型病因", "t": "反滤层不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18987, "h": "背水坡", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 18989, "h": "背水坡", "r": "典型病因", "t": "排水系统不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19105, "h": "蚁患", "r": "主要病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19247, "h": "裂缝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19248, "h": "裂缝", "r": "处置措施", "t": "裂缝回填处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19249, "h": "裂缝", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19265, "h": "裂缝分布广泛", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19271, "h": "裂缝变形", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19274, "h": "裂缝处理不及时", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19278, "h": "裂缝处理不彻底", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19281, "h": "裂缝处理不规范", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19284, "h": "裂缝处理效果差", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19303, "h": "裂缝扩展", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19304, "h": "裂缝扩展", "r": "处置措施", "t": "裂缝封闭", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19305, "h": "裂缝扩展", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19310, "h": "裂缝扩展风险", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19314, "h": "裂缝沉降", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19317, "h": "裂缝渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19322, "h": "裂缝渗漏", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19330, "h": "裂缝贯穿", "r": "处置措施", "t": "裂缝灌浆", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19583, "h": "调度规程不足", "r": "主要病因", "t": "调度规程不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19685, "h": "路面破损", "r": "主要病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19838, "h": "输水建筑物", "r": "处置措施", "t": "渗漏修复", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19839, "h": "输水建筑物", "r": "处置措施", "t": "渗漏处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19840, "h": "输水建筑物", "r": "处置措施", "t": "渗漏封堵", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19855, "h": "输水建筑物", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19856, "h": "输水建筑物", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19865, "h": "输水建筑物", "r": "处置措施", "t": "输水洞沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19866, "h": "输水建筑物", "r": "处置措施", "t": "输水洞沉降监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19868, "h": "输水建筑物", "r": "处置措施", "t": "输水洞裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19869, "h": "输水建筑物", "r": "处置措施", "t": "输水洞裂缝监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19886, "h": "输水建筑物", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19897, "h": "输水建筑物", "r": "典型病因", "t": "衬砌缺陷", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19954, "h": "输水洞", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19964, "h": "输水洞", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 19970, "h": "输水洞", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20222, "h": "输水管道", "r": "处置措施", "t": "缺陷处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20224, "h": "输水管道", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20237, "h": "输水管道", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20240, "h": "输水管道", "r": "典型病因", "t": "封堵不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20242, "h": "输水管道", "r": "典型病因", "t": "接缝处理不当", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20261, "h": "输水能力不足", "r": "主要病因", "t": "衬砌不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20285, "h": "输水设施", "r": "典型病因", "t": "防渗设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20377, "h": "输水隧洞", "r": "处置措施", "t": "缺陷修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20380, "h": "输水隧洞", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20396, "h": "输水隧洞", "r": "典型病因", "t": "衬砌质量差", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20495, "h": "运行异常", "r": "主要病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20509, "h": "运行管理", "r": "典型病因", "t": "培训不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20515, "h": "运行管理", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20551, "h": "运行管理不足", "r": "主要病因", "t": "监测设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20552, "h": "运行管理不足", "r": "主要病因", "t": "管理制度不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20589, "h": "进水塔", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20634, "h": "通信设施不足", "r": "主要病因", "t": "通信设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 20721, "h": "逸出坡降偏大", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21140, "h": "重力坝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21315, "h": "金属结构", "r": "处置措施", "t": "启闭设备沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21316, "h": "金属结构", "r": "处置措施", "t": "启闭设备沉降监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21319, "h": "金属结构", "r": "处置措施", "t": "启闭设备裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21320, "h": "金属结构", "r": "处置措施", "t": "启闭设备裂缝监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21405, "h": "金属结构", "r": "处置措施", "t": "沉降监测", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21406, "h": "金属结构", "r": "处置措施", "t": "沉降补偿", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21423, "h": "金属结构", "r": "处置措施", "t": "裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21458, "h": "金属结构", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21967, "h": "防汛公路", "r": "典型病因", "t": "建设标准低", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 21971, "h": "防汛公路", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22243, "h": "防浪墙", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22246, "h": "防浪墙", "r": "典型病因", "t": "地基处理不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22282, "h": "防浪墙缺失", "r": "主要病因", "t": "建设标准低", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22297, "h": "防浪墙裂缝", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22327, "h": "防渗处理不足", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22380, "h": "防渗面板", "r": "处置措施", "t": "裂缝修补", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22505, "h": "附属设施", "r": "处置措施", "t": "沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22565, "h": "附属设施", "r": "处置措施", "t": "防汛设施沉降处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22566, "h": "附属设施", "r": "处置措施", "t": "防汛设施沉降监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22567, "h": "附属设施", "r": "处置措施", "t": "防汛设施裂缝处理", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22568, "h": "附属设施", "r": "处置措施", "t": "防汛设施裂缝监测完善", "reason": "action_rel_but_tail_looks_problem"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22581, "h": "附属设施", "r": "典型病因", "t": "管理设施不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22583, "h": "附属设施", "r": "典型病因", "t": "维护不足", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22625, "h": "集中渗漏", "r": "主要病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}
+{"category": "lexical_relation_tail_mismatch", "line_no": 22711, "h": "风化强烈", "r": "典型病因", "t": "基础处理不完善", "reason": "cause_rel_but_tail_looks_action"}

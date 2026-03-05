@@ -1,0 +1,26 @@
+# 本地 vLLM 模型配置示例
+# 
+# 此配置适用于以下部署环境：
+# - Qwen3-32B 聊天模型: http://localhost:8001
+# - Qwen3_Embedding 模型: http://localhost:8002
+# - Qwen3_Rerank 模型: http://localhost:8003
+#
+# 将此内容复制到 saves/config/base.yaml 即可使用
+
+# 默认对话模型 - 使用本地 Qwen3-32B
+default_model: vllm//models/Qwen3-32B
+
+# 快速响应模型 - 同样使用本地模型
+fast_model: vllm//models/Qwen3-32B
+
+# Embedding 模型 - 使用本地部署的 Embedding 服务
+embed_model: vllm/Qwen3_Embedding
+
+# Reranker 模型 - 使用本地部署的 Rerank 服务
+reranker: vllm/Qwen3_Rerank
+
+# 启用重排序以提高检索质量
+enable_reranker: true
+
+# 默认智能体 ID（可选）
+default_agent_id: ''

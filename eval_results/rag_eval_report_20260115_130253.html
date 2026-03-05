@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG 评估报告 - 2026-01-15 13:02:53</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card h2 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .metric-card {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .metric-name { color: #888; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .metric-value.good { color: #10b981; }
+        .metric-value.medium { color: #f59e0b; }
+        .metric-value.bad { color: #ef4444; }
+        .metric-details { color: #666; font-size: 0.8rem; margin-top: 0.5rem; }
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .stat { }
+        .stat-value { font-size: 1.5rem; font-weight: bold; color: #7c3aed; }
+        .stat-label { color: #888; font-size: 0.85rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        th { color: #00d4ff; font-weight: 600; }
+        tr:hover { background: rgba(255, 255, 255, 0.05); }
+        .score-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 RAG 评估报告</h1>
+        <p class="subtitle">生成时间: 2026-01-15 13:02:53</p>
+        
+        <div class="card">
+            <h2>📊 总体概览</h2>
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">测试样本数</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">失败数量</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">0ms</div>
+                    <div class="stat-label">平均延迟</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📈 评估指标</h2>
+            <div class="metrics-grid">
+                
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📋 指标详情</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>指标</th>
+                        <th>均值</th>
+                        <th>中位数</th>
+                        <th>标准差</th>
+                        <th>最小值</th>
+                        <th>最大值</th>
+                        <th>分布</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h2>⚠️ 低分样本分析</h2>
+            <p style="color: #888; margin-bottom: 1rem;">以下是各指标得分较低的样本，供调试参考：</p>
+            
+        </div>
+        
+        <div class="footer">
+            <p>Powered by Yuxi-Know RAG Evaluation Framework</p>
+        </div>
+    </div>
+</body>
+</html>

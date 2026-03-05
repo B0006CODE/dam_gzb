@@ -1,0 +1,327 @@
+/* Ant Design 深色主题全局覆盖 */
+
+/* Modal 弹窗 */
+.ant-modal-content {
+    background: var(--bg-elevated);
+    border: var(--border-default);
+    border-radius: var(--radius-lg);
+}
+
+.ant-modal-header {
+    background: transparent;
+    border-bottom: var(--border-subtle);
+}
+
+.ant-modal-title {
+    color: var(--text-primary);
+}
+
+.ant-modal-close-x {
+    color: var(--text-secondary);
+}
+
+.ant-modal-body {
+    color: var(--text-primary);
+}
+
+.ant-modal-footer {
+    border-top: var(--border-subtle);
+}
+
+/* Drawer 抽屉 */
+.ant-drawer-content {
+    background: var(--bg-elevated);
+}
+
+.ant-drawer-header {
+    background: transparent;
+    border-bottom: var(--border-subtle);
+}
+
+.ant-drawer-title {
+    color: var(--text-primary);
+}
+
+.ant-drawer-close {
+    color: var(--text-secondary);
+}
+
+.ant-drawer-body {
+    color: var(--text-primary);
+}
+
+/* Popover */
+.ant-popover-inner {
+    background: var(--bg-elevated);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+}
+
+.ant-popover-arrow-content {
+    background: var(--bg-elevated);
+}
+
+.ant-popover-inner-content {
+    color: var(--text-primary);
+}
+
+/* Dropdown Menu */
+.ant-dropdown-menu {
+    background: var(--bg-elevated);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+}
+
+.ant-dropdown-menu-item {
+    color: var(--text-secondary);
+}
+
+.ant-dropdown-menu-item:hover {
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--text-primary);
+}
+
+.ant-dropdown-menu-item-divider {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Segmented */
+.ant-segmented {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+}
+
+.ant-segmented-item {
+    color: var(--text-secondary);
+}
+
+.ant-segmented-item-selected {
+    background: var(--main-color);
+    color: white;
+}
+
+.ant-segmented-thumb {
+    background: var(--main-color);
+}
+
+/* Tooltip */
+.ant-tooltip-inner {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: var(--border-subtle);
+}
+
+.ant-tooltip-arrow-content {
+    background: var(--bg-elevated);
+}
+
+/* Select */
+.ant-select-dropdown {
+    background: var(--bg-elevated);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+}
+
+.ant-select-item {
+    color: var(--text-secondary);
+}
+
+.ant-select-item-option-selected {
+    background: rgba(6, 182, 212, 0.15);
+    color: var(--main-color);
+}
+
+.ant-select-item-option-active {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Message */
+.ant-message-notice-content {
+    background: var(--bg-elevated);
+    border: var(--border-default);
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Popconfirm */
+.ant-popconfirm-inner-content {
+    color: var(--text-primary);
+}
+
+.ant-popconfirm-message-title {
+    color: var(--text-primary);
+}
+
+/* Alert */
+.ant-alert {
+    border-radius: var(--radius-md);
+}
+
+.ant-alert-info {
+    background: rgba(6, 182, 212, 0.1);
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+.ant-alert-warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.ant-alert-error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.ant-alert-success {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Card */
+.ant-card {
+    background: transparent;
+    border: none;
+}
+
+.ant-card-head {
+    border-bottom: var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.ant-card-head-title {
+    color: var(--text-primary);
+}
+
+.ant-card-body {
+    color: var(--text-primary);
+}
+
+/* Form Inputs - 表单输入框深色主题 */
+.ant-input {
+    background-color: rgba(6, 42, 92, 0.3);
+    border-color: rgba(0, 212, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.ant-input:hover {
+    border-color: var(--neon-cyan, #00d4ff);
+    background-color: rgba(6, 42, 92, 0.5);
+}
+
+.ant-input:focus,
+.ant-input-focused {
+    border-color: var(--main-color);
+    background-color: rgba(6, 42, 92, 0.5);
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+}
+
+.ant-input::placeholder {
+    color: var(--text-disabled);
+}
+
+/* Input Affix Wrapper (带图标的输入框) */
+.ant-input-affix-wrapper {
+    background-color: rgba(6, 42, 92, 0.3);
+    border-color: rgba(0, 212, 255, 0.2);
+}
+
+.ant-input-affix-wrapper:hover {
+    border-color: var(--neon-cyan, #00d4ff);
+    background-color: rgba(6, 42, 92, 0.5);
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+    border-color: var(--main-color);
+    background-color: rgba(6, 42, 92, 0.5);
+    box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+}
+
+.ant-input-affix-wrapper .ant-input {
+    background-color: transparent;
+    color: var(--text-primary);
+}
+
+.ant-input-affix-wrapper .ant-input-prefix,
+.ant-input-affix-wrapper .ant-input-suffix {
+    color: var(--text-tertiary);
+}
+
+/* Password Input */
+.ant-input-password .ant-input {
+    background-color: transparent;
+    color: var(--text-primary);
+}
+
+.ant-input-password-icon {
+    color: var(--text-tertiary);
+}
+
+.ant-input-password-icon:hover {
+    color: var(--text-primary);
+}
+
+/* Checkbox */
+.ant-checkbox-wrapper {
+    color: var(--text-secondary);
+}
+
+.ant-checkbox-inner {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ant-checkbox:hover .ant-checkbox-inner {
+    border-color: var(--main-color);
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+
+/* Form Labels */
+.ant-form-item-label>label {
+    color: var(--text-secondary);
+}
+
+.ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    color: var(--error-color);
+}
+
+/* Form Validation */
+.ant-form-item-explain-error {
+    color: var(--error-color);
+}
+
+/* Browser Autofill Override - 修复浏览器自动填充白色背景问题 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px rgba(6, 42, 92, 0.5) inset !important;
+    box-shadow: 0 0 0 1000px rgba(6, 42, 92, 0.5) inset !important;
+    -webkit-text-fill-color: var(--text-primary, #f8fafc) !important;
+    background-color: rgba(6, 42, 92, 0.5) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+    caret-color: var(--text-primary, #f8fafc) !important;
+}
+
+/* Ant Design Input with Autofill */
+.ant-input:-webkit-autofill,
+.ant-input-affix-wrapper .ant-input:-webkit-autofill,
+.ant-input-password .ant-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px rgba(6, 42, 92, 0.5) inset !important;
+    box-shadow: 0 0 0 1000px rgba(6, 42, 92, 0.5) inset !important;
+    -webkit-text-fill-color: var(--text-primary, #f8fafc) !important;
+    background-color: transparent !important;
+}

@@ -1,0 +1,12 @@
+{
+  "input": "kg_triples_cleaned.jsonl",
+  "output": "kg_triples_repaired.jsonl",
+  "input_count": 22430,
+  "output_count": 22361,
+  "changed_count": 69,
+  "applied_actions_count": 69,
+  "height_direction_swaps": 1,
+  "bidirectional_occurs_resolved": 68,
+  "unresolved_bidirectional_occurs": 0,
+  "dedup_dropped_after_repair": 1
+}

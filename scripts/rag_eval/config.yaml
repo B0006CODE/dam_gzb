@@ -1,0 +1,44 @@
+# RAG 自动化测评配置
+# 针对 Qwen3-32B + 8卡 V100 优化
+
+# 文档和知识库设置
+documents_path: "/path/to/your/docs"  # 更新为实际路径
+knowledge_base:
+  db_id: ""  # 填入你的知识库 ID
+  query_mode: "mix"
+  top_k: 10
+
+# 本地 LLM 设置 (vLLM + Qwen3-32B on 8x V100)
+evaluator_llm:
+  provider: "vllm"
+  base_url: "http://localhost:8000/v1"
+  model: "Qwen/Qwen3-32B"
+  temperature: 0.1
+  max_tokens: 4096
+
+# 问题生成设置
+question_generation:
+  questions_per_doc: 3
+  question_types:
+    - factual      # 事实性问题
+    - inferential  # 推理性问题
+
+# 评估指标
+metrics:
+  - context_precision  # 检索准确率
+  - context_recall     # 检索召回率
+  - faithfulness       # 答案忠实度
+  - answer_relevancy   # 答案相关性
+
+# 并发设置 (8卡 V100 可以高并发)
+concurrency:
+  max_concurrent_queries: 8   # RAG 查询并发
+  max_concurrent_evals: 4     # LLM 评估并发
+  batch_size: 20
+
+# 输出设置
+output:
+  report_format: "html"
+  save_path: "./eval_results"
+  save_testset: true
+  save_raw_results: true

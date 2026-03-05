@@ -1,0 +1,74 @@
+# 本地大模型配置示例
+# 
+# 此文件展示了如何配置使用本地大模型
+# 将此文件的内容复制到 saves/config/base.yaml 即可使用
+#
+# 注意：使用前请确保已按照 docs/本地大模型配置指南.md 安装并启动相应的模型服务
+
+# ============================================
+# 方案 1: 使用 Ollama（推荐用于个人开发）
+# ============================================
+# 
+# 前提条件：
+# 1. 已安装 Ollama (https://ollama.com)
+# 2. 已下载模型：
+#    - ollama pull qwen2.5:7b
+#    - ollama pull bge-m3
+
+# 使用 Ollama 的基础配置
+default_model: ollama/qwen2.5:7b
+fast_model: ollama/qwen2.5:7b
+embed_model: ollama/bge-m3
+enable_reranker: false
+default_agent_id: ''
+
+# ============================================
+# 方案 2: 使用 vLLM（推荐用于生产环境）
+# ============================================
+#
+# 前提条件：
+# 1. 已安装并启动 vLLM 服务
+# 2. 服务运行在 http://localhost:8000
+
+# 使用 vLLM 的基础配置（注释掉方案1后使用）
+# default_model: vllm/Qwen/Qwen2.5-7B-Instruct
+# fast_model: vllm/Qwen/Qwen2.5-7B-Instruct
+# embed_model: vllm/Qwen/Qwen3-Embedding-0.6B
+# reranker: vllm/BAAI/bge-reranker-v2-m3
+# enable_reranker: true
+# default_agent_id: ''
+
+# ============================================
+# 方案 3: 混合配置（本地 + 云服务）
+# ============================================
+#
+# 日常对话使用本地模型节省成本
+# 复杂任务使用云服务获得更好效果
+
+# 混合配置示例（注释掉方案1后使用）
+# default_model: ollama/qwen2.5:7b              # 本地对话模型
+# fast_model: siliconflow/THUDM/GLM-4-9B-0414   # 云端快速响应模型（需配置 API Key）
+# embed_model: ollama/bge-m3                     # 本地 Embedding
+# enable_reranker: false
+# default_agent_id: ''
+
+# ============================================
+# 注意事项
+# ============================================
+#
+# 1. 确保相应的服务已启动：
+#    - Ollama: http://localhost:11434
+#    - vLLM: http://localhost:8000
+#
+# 2. 如果在 Docker 中运行，需要配置网络访问：
+#    - 修改 base_url 为 http://host.docker.internal:11434/v1
+#    - 或使用 network_mode: "host"
+#
+# 3. 模型路径格式：
+#    - Ollama: ollama/<模型名称>
+#    - vLLM: vllm/<模型路径>
+#
+# 4. 性能优化建议：
+#    - 小显存设备：使用 7B 模型
+#    - 大显存设备：可使用 14B 或 32B 模型
+#    - 生产环境：启用 reranker 提高检索质量

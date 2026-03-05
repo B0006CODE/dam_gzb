@@ -1,0 +1,189 @@
+/* Tech Theme Palette - 科技风格调色板 */
+:root {
+  /* 核心主色调 - Cyan/Teal */
+  --main-color: #06b6d4;
+  /* Cyan-500 */
+  --main-hover: #22d3ee;
+  /* Cyan-400 */
+  --main-active: #0891b2;
+  /* Cyan-600 */
+
+  /* 辅助色 - Blue */
+  --secondary-color: #3b82f6;
+  /* Blue-500 */
+
+  /* 状态色 */
+  --success-color: #10b981;
+  /* Emerald-500 */
+  --warning-color: #f59e0b;
+  /* Amber-500 */
+  --error-color: #ef4444;
+  /* Red-500 */
+  --info-color: #0ea5e9;
+  /* Sky-500 */
+
+  /* 背景色系 - 深邃蓝灰 (Slate) */
+  --bg-body: #020617;
+  /* Slate-950 */
+  --bg-container: rgba(30, 41, 59, 0.7);
+  /* Slate-800 + Opacity */
+  --bg-elevated: #1e293b;
+  /* Slate-800 */
+  --bg-input: rgba(15, 23, 42, 0.6);
+  /* Slate-900 + Opacity */
+
+  /* 玻璃拟态变量 - 蓝色调 */
+  --glass-bg: rgba(6, 42, 92, 0.6);
+  --glass-border: 1px solid rgba(0, 212, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(12px);
+
+  /* 统一边框变量 */
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.05);
+  --border-default: 1px solid rgba(255, 255, 255, 0.1);
+  --border-accent: 1px solid rgba(6, 182, 212, 0.3);
+
+  /* 统一玻璃拟态背景 - 蓝色调 */
+  --glass-bg-light: rgba(6, 42, 92, 0.3);
+  --glass-bg-medium: rgba(6, 42, 92, 0.4);
+  --glass-bg-dense: rgba(6, 42, 92, 0.6);
+
+  /* 统一发光效果 */
+  --glow-subtle: 0 0 10px rgba(6, 182, 212, 0.1);
+  --glow-default: 0 0 15px rgba(6, 182, 212, 0.2);
+  --glow-strong: 0 0 20px rgba(6, 182, 212, 0.3);
+
+  /* 文本色系 - 反转为深色模式 */
+  --text-primary: #f8fafc;
+  /* Slate-50 */
+  --text-secondary: #94a3b8;
+  /* Slate-400 */
+  --text-tertiary: #64748b;
+  /* Slate-500 */
+  --text-disabled: #475569;
+  /* Slate-600 */
+
+  /* 兼容旧变量名 - 映射到新色板 (Variable Mapping) */
+  /* 重新定义灰阶，使其适应暗色模式 */
+  --gray-25: #0f172a;
+  /* Slate-900 (原最浅背景 -> 现深背景) */
+  --gray-50: #1e293b;
+  /* Slate-800 */
+  --gray-100: #334155;
+  /* Slate-700 */
+  --gray-150: #3d4c63;
+  /* 中间色 */
+  --gray-200: #475569;
+  /* Slate-600 */
+  --gray-300: #64748b;
+  /* Slate-500 */
+  --gray-400: #94a3b8;
+  /* Slate-400 */
+  --gray-500: #cbd5e1;
+  /* Slate-300 */
+  --gray-600: #e2e8f0;
+  /* Slate-200 (原深灰文字 -> 现浅灰文字) */
+  --gray-700: #f1f5f9;
+  /* Slate-100 */
+  --gray-800: #f8fafc;
+  /* Slate-50 */
+  --gray-900: #ffffff;
+  /* White (原最深文字 -> 现纯白文字) */
+  --gray-950: #ffffff;
+  --gray-1000: #ffffff;
+  --gray-0: rgba(30, 41, 59, 0.4);
+  /* 原纯白背景 -> 现半透明卡片背景 */
+
+  /* 语义色兼容 */
+  --success-50: rgba(16, 185, 129, 0.1);
+  --success-500: #10b981;
+  --success-600: #059669;
+  --warning-50: rgba(245, 158, 11, 0.1);
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --error-50: rgba(239, 68, 68, 0.1);
+  --error-500: #ef4444;
+  --error-600: #dc2626;
+
+  /* Chart Colors - 图表颜色系统 (Neon/Dark Mode) */
+  --chart-primary: #06b6d4;
+  /* Cyan */
+  --chart-primary-light: #67e8f9;
+  --chart-primary-dark: #0891b2;
+
+  --chart-success: #10b981;
+  /* Emerald */
+  --chart-success-light: #6ee7b7;
+  --chart-success-dark: #059669;
+
+  --chart-warning: #f59e0b;
+  /* Amber */
+  --chart-warning-light: #fcd34d;
+  --chart-warning-dark: #d97706;
+
+  --chart-error: #ef4444;
+  /* Red */
+  --chart-error-light: #fca5a5;
+  --chart-error-dark: #dc2626;
+
+  --chart-info: #3b82f6;
+  /* Blue */
+  --chart-info-light: #93c5fd;
+  --chart-info-dark: #2563eb;
+
+  --chart-secondary: #8b5cf6;
+  /* Violet */
+  --chart-secondary-light: #c4b5fd;
+  --chart-secondary-dark: #7c3aed;
+
+  --chart-accent: #f472b6;
+  /* Pink */
+  --chart-accent-light: #fbcfe8;
+  --chart-accent-dark: #db2777;
+
+  /* Chart Palette - 图表调色板 */
+  --chart-palette-1: #06b6d4;
+  --chart-palette-2: #3b82f6;
+  --chart-palette-3: #10b981;
+  --chart-palette-4: #f59e0b;
+  --chart-palette-5: #ef4444;
+  --chart-palette-6: #8b5cf6;
+  --chart-palette-7: #ec4899;
+  --chart-palette-8: #14b8a6;
+  --chart-palette-9: #6366f1;
+  --chart-palette-10: #84cc16;
+
+  /* Stats Card Colors - 统计卡片颜色系统 (Dark Mode) */
+  --stats-primary-bg: rgba(6, 182, 212, 0.15);
+  --stats-primary-color: #22d3ee;
+  --stats-success-bg: rgba(16, 185, 129, 0.15);
+  --stats-success-color: #34d399;
+  --stats-info-bg: rgba(59, 130, 246, 0.15);
+  --stats-info-color: #60a5fa;
+  --stats-warning-bg: rgba(245, 158, 11, 0.15);
+  --stats-warning-color: #fbbf24;
+  --stats-secondary-bg: rgba(139, 92, 246, 0.15);
+  --stats-secondary-color: #a78bfa;
+  --stats-error-bg: rgba(239, 68, 68, 0.15);
+  --stats-error-color: #f87171;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 15px rgba(6, 182, 212, 0.3);
+  /* 发光效果 */
+
+  /* 圆角 */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-full: 9999px;
+
+  --header-height: 60px;
+  --min-width: 450px;
+}

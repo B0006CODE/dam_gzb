@@ -1,0 +1,15 @@
+{
+  "name": "smart-water",
+  "version": "1.0.0",
+  "description": "基于大模型的智能水利知识问答系统",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:host": "vitepress dev docs --host"
+  },
+  "dependencies": {
+    "markdown-it-task-checkbox": "^1.0.6",
+    "vitepress": "^1.6.4"
+  }
+}

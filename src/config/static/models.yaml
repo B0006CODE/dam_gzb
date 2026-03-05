@@ -1,0 +1,43 @@
+MODEL_NAMES:
+  vllm:
+    name: vLLM（本地）
+    url: https://docs.vllm.ai/
+    base_url: http://host.docker.internal:50002/qwen3_32b_i4/v1
+    default: Qwen/Qwen3-32B-AWQ
+    env: VLLM_API_KEY
+    models:
+    - Qwen/Qwen3-32B-AWQ
+  deepseek:
+    name: deepseek
+    base_url: https://api.deepseek.com
+    default: deepseek-chat
+    env: DEEPSEEK_API_KEY
+    models:
+    - deepseek-chat
+  qwen3.5-plus:
+    name: qwen3.5-plus
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    default: qwen3.5-plus
+    env: sk-227de22d2d4345678271aeaeb267b13f
+    models:
+    - qwen3.5-plus
+EMBED_MODEL_INFO:
+  vllm/qwen3_embedding:
+    name: Qwen/Qwen3-Embedding-4B
+    dimension: 2560
+    base_url: http://host.docker.internal:50002/qwen3_embedding/v1/embeddings
+    api_key: VLLM_API_KEY
+  text-embedding-v4:
+    name: text-embedding-v4
+    dimension: 2560
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings
+    api_key: sk-227de22d2d4345678271aeaeb267b13f
+RERANKER_LIST:
+  vllm/bge_reranker_v2_m3:
+    name: BAAI/bge-reranker-v2-m3
+    base_url: http://host.docker.internal:50002/bge_reranker_v2_m3/v1/rerank
+    api_key: VLLM_API_KEY
+  qwen3-rerank:
+    name: qwen3-rerank
+    base_url: https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank
+    api_key: sk-227de22d2d4345678271aeaeb267b13f
