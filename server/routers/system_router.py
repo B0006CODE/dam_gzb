@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+import re
 import uuid
 from collections import deque
 from pathlib import Path
@@ -281,12 +282,17 @@ async def get_all_chat_models_status(current_user: User = Depends(get_admin_user
 
 # 默认大坝异常配置
 DEFAULT_DAM_EXCEPTION_CONFIG = {
+    "retrieval_mode": "mix",  # 检索方式：mix/local/global/llm
     "kb_whitelist": [],  # 知识库白名单
     "graph_name": "neo4j",  # 知识图谱名称
-    "exception_api_url": "https://mock.apipost.net/mock/349eac/point/getExceptInfo",  # 默认异常数据API
-    "exception_api_params": {"apipost_id": "5735bd5d1c8a000", "pwd": "iwhr"},  # API参数
+    "exception_api_url": "https://iiot.cypc.com.cn/damIMonitorApi/yxy/point/getExceptInfo",  # 默认异常数据API
+    "exception_api_params": {},  # API查询参数
+    "exception_api_headers": {},  # API请求头
     "include_repair_suggestions": True,  # 是否默认包含修复建议
 }
+
+VALID_DAM_RETRIEVAL_MODES = {"mix", "local", "global", "llm"}
+VALID_DAM_RESPONSE_TYPES = {"qa", "stats", "both"}
 
 # 存储大坝异常配置的文件路径
 DAM_CONFIG_FILE = Path("saves/config/dam_exception.yaml")
@@ -299,7 +305,8 @@ def load_dam_exception_config() -> dict:
     try:
         if DAM_CONFIG_FILE.exists():
             with open(DAM_CONFIG_FILE, encoding="utf-8") as f:
-                return yaml.safe_load(f) or DEFAULT_DAM_EXCEPTION_CONFIG.copy()
+                data = yaml.safe_load(f) or {}
+                return DEFAULT_DAM_EXCEPTION_CONFIG.copy() | data
     except Exception as e:
         logger.error(f"加载大坝异常配置失败: {e}")
     return DEFAULT_DAM_EXCEPTION_CONFIG.copy()
@@ -367,6 +374,16 @@ def build_dam_exception_qa_prompt(question: str, context: str, include_repair_su
 用户问题：{question}
 {action_requirements}
 
+请严格按以下 Markdown 结构输出：
+### 出现问题
+- 列出识别到的关键异常、风险点或现象
+
+### 建议解决方案
+- 分条给出具体建议，优先写清楚立即措施、短期处置和持续整改
+
+### 综合分析
+用 1-2 段总结问题严重程度、优先排查方向和建议依据。
+
 请确保回答具体、可落地，优先输出操作步骤，不要泛泛而谈。"""
 
 
@@ -379,19 +396,197 @@ def build_fallback_solution(stats: dict[str, Any], exceptions: list[dict[str, An
 
     top_points = []
     for item in exceptions[:3]:
+        point_name = item.get("pointName", "未知测点")
+        point_score = item.get("score", "未知")
+        point_comment = item.get("comment", "无")
         top_points.append(
-            f"- {item.get('pointName', '未知测点')}（评分: {item.get('score', '未知')}，评估: {item.get('comment', '无')}）"
+            f"- {point_name}（评分: {point_score}，评估: {point_comment}）"
         )
     points_text = "\n".join(top_points) if top_points else "- 暂无异常测点详情"
 
     return (
-        f"当前共识别到 {total_count} 个异常测点，最严重测点为 {severe_point}（{severe_comment}）。\n"
-        "建议按以下步骤处置：\n"
-        "1. 立即措施（0-2小时）：复核最严重测点与同区域测点，排除传感器故障，完成现场巡检。\n"
-        "2. 短期处置（24小时内）：对异常区域加密监测频次，补充人工校核数据，形成风险分级。\n"
-        "3. 持续整改（1-7天）：针对重复异常测点实施专项治理并跟踪趋势，更新预警阈值。\n"
-        f"重点关注测点：\n{points_text}"
+        "### 出现问题\n"
+        f"- 当前共识别到 {total_count} 个异常测点。\n"
+        f"- 最严重测点为 {severe_point}，评估信息：{severe_comment}。\n"
+        f"- 需优先复核的重点测点包括：\n{points_text}\n\n"
+        "### 建议解决方案\n"
+        "- 立即措施（0-2小时）：复核最严重测点与同区域测点，排除传感器故障，完成现场巡检。\n"
+        "- 短期处置（24小时内）：对异常区域加密监测频次，补充人工校核数据，形成风险分级。\n"
+        "- 持续整改（1-7天）：针对重复异常测点实施专项治理并跟踪趋势，更新预警阈值。\n\n"
+        "### 综合分析\n"
+        f"当前异常测点总数为 {total_count} 个，建议优先围绕重点测点及其相邻区域开展排查，并结合趋势数据持续跟踪。"
     )
+
+
+def normalize_dam_retrieval_mode(value: str | None) -> str:
+    """标准化异常问答检索模式。"""
+    mode = str(value or "").strip().lower()
+    return mode if mode in VALID_DAM_RETRIEVAL_MODES else DEFAULT_DAM_EXCEPTION_CONFIG["retrieval_mode"]
+
+
+def normalize_dam_kb_whitelist(value: Any) -> list[str]:
+    """标准化知识库白名单。"""
+    if value is None:
+        return []
+    if isinstance(value, str):
+        value = [value]
+    if not isinstance(value, list):
+        return []
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for item in value:
+        text = str(item or "").strip()
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        normalized.append(text)
+    return normalized
+
+
+def normalize_dam_graph_name(value: Any) -> str | None:
+    """标准化图谱名称。"""
+    text = str(value or "").strip()
+    return text or None
+
+
+def build_problem_items(exceptions: list[dict[str, Any]], stats: dict[str, Any], limit: int = 5) -> list[str]:
+    """基于异常数据生成结构化问题列表。"""
+    items: list[str] = []
+
+    total_count = stats.get("total_count", 0)
+    if total_count:
+        items.append(f"共识别到 {total_count} 个异常测点，需按严重程度分级处置。")
+
+    for item in exceptions[:limit]:
+        point_name = item.get("pointName") or "未知测点"
+        area = item.get("area") or "未知区域"
+        instrument = item.get("instrumentName") or "未知仪器"
+        comment = item.get("comment") or "存在异常"
+        score = item.get("score")
+        score_text = f"，评分 {score}" if score not in (None, "") else ""
+        items.append(f"{point_name} 位于 {area}，类型为 {instrument}，当前表现为“{comment}”{score_text}。")
+
+    return items[:limit]
+
+
+def build_stats_summary(stats: dict[str, Any], exceptions: list[dict[str, Any]], limit: int = 5) -> str:
+    """构建纯统计模式下的摘要。"""
+    total_count = stats.get("total_count", 0)
+    by_instrument = stats.get("by_instrument") or {}
+    by_area = stats.get("by_area") or {}
+    most_severe = stats.get("most_severe") or {}
+
+    instrument_lines = [
+        f"- {name}: {count} 个"
+        for name, count in sorted(by_instrument.items(), key=lambda item: (-item[1], item[0]))[:limit]
+    ]
+    area_lines = [
+        f"- {name}: {count} 个"
+        for name, count in sorted(by_area.items(), key=lambda item: (-item[1], item[0]))[:limit]
+    ]
+
+    severe_point = most_severe.get("pointName") or "暂无"
+    severe_comment = most_severe.get("comment") or "暂无"
+    severe_score = most_severe.get("score")
+    severe_suffix = f"，评分 {severe_score}" if severe_score not in (None, "") else ""
+
+    sections = [
+        "### 统计概览",
+        f"- 异常测点总数：{total_count} 个",
+        f"- 最严重测点：{severe_point}{severe_suffix}",
+        f"- 重点评估：{severe_comment}",
+    ]
+
+    if instrument_lines:
+        sections.append("")
+        sections.append("### 按仪器类型统计")
+        sections.extend(instrument_lines)
+
+    if area_lines:
+        sections.append("")
+        sections.append("### 按区域统计")
+        sections.extend(area_lines)
+
+    if exceptions:
+        sections.append("")
+        sections.append("### 重点异常测点")
+        for item in exceptions[:limit]:
+            point_name = item.get("pointName") or "未知测点"
+            area = item.get("area") or "未知区域"
+            instrument = item.get("instrumentName") or "未知仪器"
+            comment = item.get("comment") or "存在异常"
+            score = item.get("score")
+            score_text = f"，评分 {score}" if score not in (None, "") else ""
+            sections.append(f"- {point_name} @ {area} / {instrument}：{comment}{score_text}")
+
+    return "\n".join(sections)
+
+
+def normalize_dam_response_type(value: str | None) -> str:
+    """标准化异常问答返回模式。"""
+    response_type = str(value or "").strip().lower()
+    return response_type if response_type in VALID_DAM_RESPONSE_TYPES else "both"
+
+
+def _extract_markdown_section(answer: str, heading: str) -> str:
+    pattern = rf"(?:^|\n)#+\s*{heading}\s*\n(.*?)(?=(?:\n#+\s*(?:出现问题|建议解决方案|综合分析)\s*\n)|\Z)"
+    match = re.search(pattern, answer or "", re.S)
+    return match.group(1).strip() if match else ""
+
+
+def extract_markdown_bullets(section_text: str, limit: int = 6) -> list[str]:
+    """从 Markdown 段落中提取条目。"""
+    results: list[str] = []
+    for raw_line in (section_text or "").splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        normalized = re.sub(r"^[-*•]\s+", "", line)
+        normalized = re.sub(r"^\d+[.)]\s+", "", normalized)
+        normalized = normalized.strip()
+        if not normalized:
+            continue
+        results.append(normalized)
+        if len(results) >= limit:
+            break
+    return results
+
+
+async def load_dam_exception_retrieval_context(
+    *,
+    query_text: str,
+    retrieval_mode: str,
+    kb_whitelist: list[str],
+    graph_name: str | None,
+) -> tuple[str, dict[str, Any]]:
+    """根据异常问答配置预取检索上下文。"""
+    retrieval_context = ""
+    retrieval_meta = {
+        "retrieval_mode": retrieval_mode,
+        "kb_whitelist": kb_whitelist,
+        "graph_name": graph_name,
+        "used": False,
+    }
+
+    if retrieval_mode == "llm":
+        return retrieval_context, retrieval_meta
+
+    try:
+        from src.agents.chatbot.graph import _prefetch_retrieval, _build_retrieval_context
+
+        retrieval_input: dict[str, Any] = {}
+        if retrieval_mode in {"mix", "local"}:
+            retrieval_input["kb_whitelist"] = kb_whitelist
+        if retrieval_mode in {"mix", "global"}:
+            retrieval_input["graph_name"] = graph_name or DEFAULT_DAM_EXCEPTION_CONFIG["graph_name"]
+
+        kb_results, graph_results = await _prefetch_retrieval(query_text, retrieval_input, retrieval_mode)
+        retrieval_context = _build_retrieval_context(kb_results, graph_results)
+        retrieval_meta["used"] = bool(retrieval_context)
+    except Exception as e:
+        logger.warning(f"异常问答检索失败，将退回纯模型回答: {e}")
+
+    return retrieval_context, retrieval_meta
 
 
 class DamExceptionQARequest(BaseModel):
@@ -399,9 +594,15 @@ class DamExceptionQARequest(BaseModel):
 
     question: str = Field(..., min_length=1, max_length=2000, description="异常问题")
     source_system: str = Field(default="external-system", max_length=100, description="调用来源系统标识")
+    exception_data: Any | None = Field(default=None, description="可选直接传入的异常数据")
     exception_api_url: str | None = Field(default=None, description="可选覆盖异常数据接口地址")
     exception_api_params: dict[str, Any] | None = Field(default=None, description="可选覆盖异常数据接口参数")
+    exception_api_headers: dict[str, Any] | None = Field(default=None, description="可选覆盖异常数据接口请求头")
     include_repair_suggestions: bool | None = Field(default=None, description="是否要求返回修复建议")
+    response_type: str | None = Field(default=None, description="返回模式：qa/stats/both，默认 both")
+    retrieval_mode: str | None = Field(default=None, description="检索方式：mix/local/global/llm")
+    kb_whitelist: list[str] | None = Field(default=None, description="可选指定知识库列表")
+    graph_name: str | None = Field(default=None, description="可选指定知识图谱")
     model_provider: str | None = Field(default=None, description="可选指定模型提供商")
     model_name: str | None = Field(default=None, description="可选指定模型名称")
 
@@ -419,10 +620,12 @@ async def get_dam_exception_config(current_user: User = Depends(get_admin_user))
 
 @system.post("/dam-exception/config")
 async def update_dam_exception_config(
+    retrieval_mode: str = Body(None),
     kb_whitelist: list[str] = Body(None),
     graph_name: str = Body(None),
     exception_api_url: str = Body(None),
     exception_api_params: dict = Body(None),
+    exception_api_headers: dict = Body(None),
     include_repair_suggestions: bool = Body(None),
     current_user: User = Depends(get_admin_user),
 ):
@@ -430,25 +633,29 @@ async def update_dam_exception_config(
     try:
         # 加载当前配置
         config_data = load_dam_exception_config()
-        
+
         # 更新非空字段
+        if retrieval_mode is not None:
+            config_data["retrieval_mode"] = normalize_dam_retrieval_mode(retrieval_mode)
         if kb_whitelist is not None:
-            config_data["kb_whitelist"] = kb_whitelist
+            config_data["kb_whitelist"] = normalize_dam_kb_whitelist(kb_whitelist)
         if graph_name is not None:
-            config_data["graph_name"] = graph_name
+            config_data["graph_name"] = normalize_dam_graph_name(graph_name) or DEFAULT_DAM_EXCEPTION_CONFIG["graph_name"]
         if exception_api_url is not None:
             config_data["exception_api_url"] = exception_api_url
         if exception_api_params is not None:
             config_data["exception_api_params"] = exception_api_params
+        if exception_api_headers is not None:
+            config_data["exception_api_headers"] = exception_api_headers
         if include_repair_suggestions is not None:
             config_data["include_repair_suggestions"] = include_repair_suggestions
-        
+
         # 保存配置
         if save_dam_exception_config(config_data):
             return {"success": True, "message": "配置更新成功", "data": config_data}
         else:
             raise HTTPException(status_code=500, detail="保存配置失败")
-            
+
     except HTTPException:
         raise
     except Exception as e:
@@ -471,37 +678,89 @@ async def ask_dam_exception_qa(request_data: DamExceptionQARequest):
             else dam_config.get("include_repair_suggestions", True)
         )
 
-        api_response = await dam_exception_service.fetch_exception_data(
-            api_url=request_data.exception_api_url or dam_config.get("exception_api_url"),
-            api_params=request_data.exception_api_params or dam_config.get("exception_api_params"),
-        )
-        raw_data = api_response.get("data", [])
+        if request_data.exception_data is not None:
+            raw_payload = request_data.exception_data
+        else:
+            api_response = await dam_exception_service.fetch_exception_data(
+                api_url=request_data.exception_api_url or dam_config.get("exception_api_url"),
+                api_params=request_data.exception_api_params or dam_config.get("exception_api_params"),
+                api_headers=request_data.exception_api_headers or dam_config.get("exception_api_headers"),
+            )
+            raw_payload = api_response.get("data", []) if isinstance(api_response, dict) else api_response
+
+        raw_data = dam_exception_service.normalize_exception_data(raw_payload)
+        if not raw_data:
+            raise ValueError("未获取到可解析的异常数据")
         exceptions = dam_exception_service.parse_exceptions(raw_data)
         stats = dam_exception_service.get_summary_stats(exceptions)
         context = dam_exception_service.build_context_for_qa(exceptions)
+        problems = build_problem_items(exceptions, stats)
+        stats_summary = build_stats_summary(stats, exceptions)
+        response_type = normalize_dam_response_type(request_data.response_type)
 
-        prompt = build_dam_exception_qa_prompt(question, context, include_repair_suggestions)
-        system_prompt = (
-            "你是一位资深大坝安全专家。请根据监测异常数据提供结构化、可执行的技术处置建议，"
-            "回答务必具体，避免泛化描述。"
+        retrieval_mode = normalize_dam_retrieval_mode(
+            request_data.retrieval_mode or dam_config.get("retrieval_mode")
+        )
+        kb_whitelist = normalize_dam_kb_whitelist(
+            request_data.kb_whitelist if request_data.kb_whitelist is not None else dam_config.get("kb_whitelist")
+        )
+        graph_name = normalize_dam_graph_name(
+            request_data.graph_name if request_data.graph_name is not None else dam_config.get("graph_name")
         )
 
+        retrieval_meta = {
+            "retrieval_mode": retrieval_mode,
+            "kb_whitelist": kb_whitelist,
+            "graph_name": graph_name,
+            "used": False,
+            "skipped": response_type == "stats",
+        }
         answer = ""
+        suggestions: list[str] = []
         generation_error = None
-        try:
-            model = select_model(model_provider=request_data.model_provider, model_name=request_data.model_name)
-            messages = [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt},
-            ]
 
-            loop = asyncio.get_event_loop()
-            model_response = await loop.run_in_executor(None, lambda: model.call(messages, stream=False))
-            answer = getattr(model_response, "content", "") or str(model_response)
-        except Exception as model_error:
-            generation_error = str(model_error)
-            logger.warning(f"异常问答模型调用失败，使用兜底建议: {generation_error}")
-            answer = build_fallback_solution(stats, exceptions)
+        if response_type == "stats":
+            answer = stats_summary
+        else:
+            retrieval_query = f"{question}\n\n{context}"
+            retrieval_context, retrieval_meta = await load_dam_exception_retrieval_context(
+                query_text=retrieval_query,
+                retrieval_mode=retrieval_mode,
+                kb_whitelist=kb_whitelist,
+                graph_name=graph_name,
+            )
+            retrieval_meta["skipped"] = False
+
+            prompt = build_dam_exception_qa_prompt(question, context, include_repair_suggestions)
+            system_prompt = (
+                "你是一位资深大坝安全专家。请根据监测异常数据提供结构化、可执行的技术处置建议，"
+                "回答务必具体，避免泛化描述。"
+            )
+            if retrieval_context:
+                system_prompt += f"\n\n以下是可参考的背景知识，请结合使用，但不要脱离异常数据本身：\n{retrieval_context}"
+
+            try:
+                model = select_model(model_provider=request_data.model_provider, model_name=request_data.model_name)
+                messages = [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt},
+                ]
+
+                loop = asyncio.get_event_loop()
+                model_response = await loop.run_in_executor(None, lambda: model.call(messages, stream=False))
+                answer = getattr(model_response, "content", "") or str(model_response)
+            except Exception as model_error:
+                generation_error = str(model_error)
+                logger.warning(f"异常问答模型调用失败，使用兜底建议: {generation_error}")
+                answer = build_fallback_solution(stats, exceptions)
+
+            suggestions = extract_markdown_bullets(_extract_markdown_section(answer, "建议解决方案"))
+            if not suggestions:
+                suggestions = [
+                    "立即复核重点异常测点及同区域关联测点，排除传感器或采集异常。",
+                    "在 24 小时内加密监测频次，补充人工校核数据并形成风险分级。",
+                    "针对重复异常测点制定专项整改与持续跟踪计划。"
+                ]
 
         record_id = str(uuid.uuid4())
         record = {
@@ -510,8 +769,13 @@ async def ask_dam_exception_qa(request_data: DamExceptionQARequest):
             "source_system": request_data.source_system,
             "question": question,
             "answer": answer,
+            "response_type": response_type,
+            "stats_summary": stats_summary,
+            "problems": problems if response_type in {"qa", "both"} else [],
+            "suggestions": suggestions if response_type in {"qa", "both"} else [],
             "stats": stats,
             "exception_points_total": len(raw_data),
+            "retrieval": retrieval_meta,
             "is_fallback": generation_error is not None,
             "generation_error": generation_error,
         }
@@ -522,10 +786,15 @@ async def ask_dam_exception_qa(request_data: DamExceptionQARequest):
             "record_id": record_id,
             "question": question,
             "answer": answer,
+            "response_type": response_type,
+            "stats_summary": stats_summary,
+            "problems": problems if response_type in {"qa", "both"} else [],
+            "suggestions": suggestions if response_type in {"qa", "both"} else [],
             "source_system": request_data.source_system,
             "asked_at": record["asked_at"],
             "stats": stats,
             "exception_points_total": len(raw_data),
+            "retrieval": retrieval_meta,
             "is_fallback": generation_error is not None,
         }
     except ValueError as e:
@@ -556,7 +825,7 @@ async def get_available_knowledge_bases(current_user: User = Depends(get_admin_u
     """获取可用的知识库列表（供管理员选择）"""
     try:
         from src import knowledge_base
-        
+
         retrievers = knowledge_base.get_retrievers()
         kb_list = [
             {"id": db_id, "name": info.get("name", db_id)}
@@ -576,7 +845,7 @@ async def get_available_graphs(current_user: User = Depends(get_admin_user)):
         graphs = [
             {"id": "neo4j", "name": "Neo4j知识图谱"},
         ]
-        
+
         # 尝试获取其他配置的图谱
         try:
             from src import knowledge_base
@@ -587,7 +856,7 @@ async def get_available_graphs(current_user: User = Depends(get_admin_user)):
                         graphs.append({"id": g, "name": g})
         except Exception:
             pass
-            
+
         return {"success": True, "graphs": graphs}
     except Exception as e:
         logger.error(f"获取图谱列表失败: {e}")
@@ -638,11 +907,11 @@ async def update_model_provider(
         }
         if url:
             provider_data["url"] = url
-            
+
         config.model_names[provider_id] = provider_data
         config._save_models_to_file()
         config.handle_self()  # 重新处理配置以更新状态
-        
+
         return {"success": True, "message": f"提供商 '{provider_id}' 更新成功", "data": provider_data}
     except Exception as e:
         logger.error(f"更新模型提供商失败: {e}")
@@ -658,11 +927,11 @@ async def delete_model_provider(
     try:
         if provider_id not in config.model_names:
             raise HTTPException(status_code=404, detail=f"提供商 '{provider_id}' 不存在")
-        
+
         del config.model_names[provider_id]
         config._save_models_to_file()
         config.handle_self()
-        
+
         return {"success": True, "message": f"提供商 '{provider_id}' 删除成功"}
     except HTTPException:
         raise
@@ -688,13 +957,13 @@ async def update_embed_model(
             "base_url": base_url,
             "api_key": api_key,
         }
-        
+
         config.embed_model_names[model_id] = model_data
         config._save_models_to_file()
-        
+
         # 更新配置项 choices
         config._config_items["embed_model"]["choices"] = list(config.embed_model_names.keys())
-        
+
         return {"success": True, "message": f"Embedding模型 '{model_id}' 更新成功", "data": model_data}
     except Exception as e:
         logger.error(f"更新Embedding模型失败: {e}")
@@ -710,11 +979,11 @@ async def delete_embed_model(
     try:
         if model_id not in config.embed_model_names:
             raise HTTPException(status_code=404, detail=f"Embedding模型 '{model_id}' 不存在")
-        
+
         del config.embed_model_names[model_id]
         config._save_models_to_file()
         config._config_items["embed_model"]["choices"] = list(config.embed_model_names.keys())
-        
+
         return {"success": True, "message": f"Embedding模型 '{model_id}' 删除成功"}
     except HTTPException:
         raise
@@ -738,13 +1007,13 @@ async def update_reranker(
             "base_url": base_url,
             "api_key": api_key,
         }
-        
+
         config.reranker_names[model_id] = model_data
         config._save_models_to_file()
-        
+
         # 更新配置项 choices
         config._config_items["reranker"]["choices"] = list(config.reranker_names.keys())
-        
+
         return {"success": True, "message": f"Reranker模型 '{model_id}' 更新成功", "data": model_data}
     except Exception as e:
         logger.error(f"更新Reranker模型失败: {e}")
@@ -760,11 +1029,11 @@ async def delete_reranker(
     try:
         if model_id not in config.reranker_names:
             raise HTTPException(status_code=404, detail=f"Reranker模型 '{model_id}' 不存在")
-        
+
         del config.reranker_names[model_id]
         config._save_models_to_file()
         config._config_items["reranker"]["choices"] = list(config.reranker_names.keys())
-        
+
         return {"success": True, "message": f"Reranker模型 '{model_id}' 删除成功"}
     except HTTPException:
         raise

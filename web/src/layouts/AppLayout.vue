@@ -1,9 +1,6 @@
 <script setup>
 import { ref, reactive, onMounted, useTemplateRef, computed } from 'vue'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-import {
-  ExclamationCircleOutlined,
-} from '@ant-design/icons-vue'
 import { Bot, Waypoints, LibraryBig, Settings, BarChart3, BookOpen, ListChecks, Map } from 'lucide-vue-next';
 import { onLongPress } from '@vueuse/core'
 
@@ -81,6 +78,13 @@ const mainList = [
     path: '/agent',
     icon: Bot,
     activeIcon: Bot,
+    requiresAdmin: false,
+  },
+  {
+    name: '异常问答',
+    path: '/exception-qa',
+    icon: BookOpen,
+    activeIcon: BookOpen,
     requiresAdmin: false,
   },
   {

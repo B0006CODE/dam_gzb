@@ -216,7 +216,7 @@ def _direct_reservoir_count_statistics(query_text: str) -> dict[str, Any] | None
     output_parts = [
         "【结构化水库统计结果】",
         f"统计范围：{scope_text}",
-        f"统计口径：按数据记录条目计数",
+        "统计口径：按数据记录条目计数",
         f"结果：共 {len(filtered)} 座",
     ]
     if province_counts:
@@ -241,7 +241,7 @@ def _extract_stat_params(text: str) -> tuple[str, str]:
     """从用户查询中提取统计参数：关键词和查询类型"""
     keyword = ""
     query_type = "病害"
-    
+
     # 提取实体关键词（常见大坝类型）
     entity_patterns = [
         r"(重力坝|土石坝|拱坝|溢洪道|闸门|坝基|坝体|廊道|混凝土坝|堆石坝|水库)",
@@ -252,7 +252,7 @@ def _extract_stat_params(text: str) -> tuple[str, str]:
         if match:
             keyword = match.group(1)
             break
-    
+
     # 判断查询类型
     if any(kw in text for kw in ["解决", "措施", "处理", "整改", "方法", "怎么办"]):
         if any(kw in text for kw in ["病害", "缺陷", "风险", "隐患", "问题"]):
@@ -263,7 +263,7 @@ def _extract_stat_params(text: str) -> tuple[str, str]:
         query_type = "病害"
     elif "全部" in text or ("所有" in text and any(kw in text for kw in ["信息", "数据", "内容"])):
         query_type = "全部"
-    
+
     return keyword, query_type
 
 
@@ -271,25 +271,25 @@ async def _direct_graph_statistics(query_text: str, graph_name: str = "neo4j") -
     """直接调用知识图谱统计（不依赖工具调用机制）"""
     # 导入语义映射
     from src.agents.common.tools import SEMANTIC_MAPPING
-    
+
     try:
         if graph_name != "neo4j":
             logger.debug(f"Direct statistics not supported for non-neo4j graph: {graph_name}")
             return None
-            
+
         if not graph_base.is_running():
             logger.warning("Neo4j database not connected")
             return None
-        
+
         keyword, query_type = _extract_stat_params(query_text)
         logger.info(f"Direct statistics: keyword='{keyword}', query_type='{query_type}'")
-        
+
         graph_base.use_database(graph_name)
-        
+
         # 确定要查询的关系类型
         relation_types_to_query = []
         query_labels = []
-        
+
         if "全部" in query_type or ("病害" in query_type and ("解决" in query_type or "措施" in query_type)):
             relation_types_to_query.extend(SEMANTIC_MAPPING.get("病害", []))
             relation_types_to_query.extend(SEMANTIC_MAPPING.get("解决方法", []))
@@ -303,12 +303,12 @@ async def _direct_graph_statistics(query_text: str, graph_name: str = "neo4j") -
         else:
             relation_types_to_query.extend(SEMANTIC_MAPPING.get("病害", []))
             query_labels = ["病害"]
-        
+
         relation_types_to_query = list(set(relation_types_to_query))
-        
+
         with graph_base.driver.session() as session:
             results_by_type = {}
-            
+
             for rel_type in relation_types_to_query:
                 if keyword:
                     results = session.run("""
@@ -325,13 +325,13 @@ async def _direct_graph_statistics(query_text: str, graph_name: str = "neo4j") -
                         RETURN DISTINCT m.name as target_entity, r.type as relation_type
                         ORDER BY target_entity
                     """, rel_type=rel_type)
-                
+
                 entities = []
                 for record in results:
                     entity = record["target_entity"]
                     if entity and entity not in entities:
                         entities.append(entity)
-                
+
                 if entities:
                     display_type = rel_type
                     if rel_type == "COMMON_DEFECT":
@@ -344,18 +344,18 @@ async def _direct_graph_statistics(query_text: str, graph_name: str = "neo4j") -
                         display_type = "处置措施"
                     elif rel_type == "TYPICAL_DEFECT":
                         display_type = "典型缺陷"
-                    
+
                     if display_type not in results_by_type:
                         results_by_type[display_type] = []
                     results_by_type[display_type].extend(entities)
-            
+
             # 去重
             for rel_type in results_by_type:
                 results_by_type[rel_type] = list(dict.fromkeys(results_by_type[rel_type]))
-            
+
             if not results_by_type:
                 return None
-            
+
             # 脱敏处理
             def desensitize_text(text):
                 if not text:
@@ -365,33 +365,33 @@ async def _direct_graph_statistics(query_text: str, graph_name: str = "neo4j") -
                 text = re.sub(r'\d+(?:\.\d+)?[mM米]', '一定长度', text)
                 text = re.sub(r'[kK]\d+\+\d+', '某桩号', text)
                 return text
-            
+
             desensitized_results = {}
             for k, v in results_by_type.items():
                 desensitized_entities = [desensitize_text(e) for e in v]
                 desensitized_entities = list(dict.fromkeys(desensitized_entities))
                 desensitized_results[k] = desensitized_entities
-            
+
             total_count = sum(len(v) for v in desensitized_results.values())
             scope = f"'{keyword}'相关的" if keyword else "整个图谱中的"
-            
+
             # 生成文本摘要
             output_parts = [
-                f"【知识图谱统计结果】",
+                "【知识图谱统计结果】",
                 f"查询范围：{scope}{'/'.join(query_labels)}",
                 f"共找到 {total_count} 种不同的{'/'.join(query_labels)}类型",
                 "",
                 "按关系类型分类统计："
             ]
-            
+
             for rel_type, entities in sorted(desensitized_results.items(), key=lambda x: len(x[1]), reverse=True):
                 count = len(entities)
                 preview = "、".join(entities[:8])
                 if len(entities) > 8:
-                    preview += f"...等"
+                    preview += "...等"
                 output_parts.append(f"  ▪ {rel_type}：{count} 种")
                 output_parts.append(f"    包括：{preview}")
-            
+
             return {
                 "query_type": "statistics",
                 "keyword": keyword,
@@ -401,7 +401,7 @@ async def _direct_graph_statistics(query_text: str, graph_name: str = "neo4j") -
                 "results_by_type": {k: {"count": len(v), "entities": v} for k, v in desensitized_results.items()},
                 "text_summary": "\n".join(output_parts)
             }
-                
+
     except Exception as e:
         logger.error(f"Direct graph statistics error: {e}")
         return None
@@ -710,7 +710,12 @@ class ChatbotAgent(BaseAgent):
         input_context = _get_runtime_input_context(runtime)
         return get_tools(input_context)
 
-    async def _get_invoke_tools(self, selected_tools: list[str], selected_mcps: list[str], runtime: Runtime[Context] = None):
+    async def _get_invoke_tools(
+        self,
+        selected_tools: list[str],
+        selected_mcps: list[str],
+        runtime: Runtime[Context] = None,
+    ):
         """根据配置获取工具。
         工具注入根据 retrieval_mode 进行过滤：
         - llm: 不注入任何工具（纯大模型回答）
@@ -721,7 +726,7 @@ class ChatbotAgent(BaseAgent):
         # 获取 retrieval_mode - 添加详细调试日志
         input_context = None
         retrieval_mode = "mix"
-        
+
         try:
             # 调试：打印 runtime 的结构
             logger.info(f"DEBUG runtime: {runtime}")
@@ -733,21 +738,21 @@ class ChatbotAgent(BaseAgent):
         except Exception as e:
             logger.error(f"Error getting retrieval_mode: {e}")
             retrieval_mode = "mix"
-        
+
         # 在 llm 模式下，不注入任何工具（包括 MCP）
         if retrieval_mode == "llm":
             logger.info("LLM mode: returning empty tools")
             return []
-        
+
         # 每次都重新获取工具，不使用缓存，以确保根据当前 retrieval_mode 获取正确的工具
         # get_tools 内部会调用 get_buildin_tools，它会根据 retrieval_mode 过滤工具
         all_tools = self.get_tools(runtime)
-        
+
         # 图谱相关工具名称
         core_graph_tool_names = {"global_knowledge_graph_search", "knowledge_graph_statistics"}
-        
+
         enabled_tools = []
-        
+
         if retrieval_mode == "local":
             # local 模式：只使用知识库工具，排除所有图谱工具
             enabled_tools = [tool for tool in all_tools if tool.name not in core_graph_tool_names]
@@ -760,26 +765,26 @@ class ChatbotAgent(BaseAgent):
             # mix 模式：使用所有工具
             enabled_tools = all_tools
             logger.info(f"Mix mode: using all tools: {[t.name for t in enabled_tools]}")
-        
+
         # 如果有 selected_tools 配置，进一步过滤
         if selected_tools and isinstance(selected_tools, list) and len(selected_tools) > 0:
             # 只保留在 selected_tools 中的工具，但仍需遵守 retrieval_mode 的限制
             if retrieval_mode == "local":
-                enabled_tools = [tool for tool in enabled_tools 
+                enabled_tools = [tool for tool in enabled_tools
                                 if tool.name in selected_tools and tool.name not in core_graph_tool_names]
             elif retrieval_mode == "global":
-                enabled_tools = [tool for tool in enabled_tools 
+                enabled_tools = [tool for tool in enabled_tools
                                 if tool.name in selected_tools or tool.name in core_graph_tool_names]
             else:
                 enabled_tools = [tool for tool in enabled_tools if tool.name in selected_tools]
-            
+
             # mix 和 global 模式确保核心图谱工具始终可用
             if retrieval_mode in ("mix", "global"):
                 existing_names = {t.name for t in enabled_tools}
                 for tool in all_tools:
                     if tool.name in core_graph_tool_names and tool.name not in existing_names:
                         enabled_tools.append(tool)
-        
+
         # 处理 MCP 工具
         if selected_mcps and isinstance(selected_mcps, list) and len(selected_mcps) > 0:
             for mcp in selected_mcps:
@@ -867,7 +872,11 @@ class ChatbotAgent(BaseAgent):
                             }
                         )
 
-                if _is_statistical_query(query_text) and not has_direct_structured_stats and retrieval_mode in {"mix", "global"}:
+                if (
+                    _is_statistical_query(query_text)
+                    and not has_direct_structured_stats
+                    and retrieval_mode in {"mix", "global"}
+                ):
                     graph_name = input_context.get("graph_name") or "neo4j"
                     stat_result = await _direct_graph_statistics(query_text, graph_name)
                     if stat_result and stat_result.get("text_summary"):
@@ -881,13 +890,15 @@ class ChatbotAgent(BaseAgent):
                                 "sourceType": "knowledge_graph",
                             }
                         )
-                
+
                 policy = await self._decide_retrieval_policy(query_text, runtime.context, retrieval_mode)
                 if policy in {"inject", "enforce"} and not has_direct_structured_stats:
                     kb_results, graph_results = await _prefetch_retrieval(query_text, input_context, retrieval_mode)
                     has_results = _has_retrieval_results(kb_results, graph_results) or bool(statistics_context)
                     if policy == "enforce" and not has_results:
-                        no_result_reply = getattr(runtime.context, "retrieval_no_result_reply", "资料不足") or "资料不足"
+                        no_result_reply = (
+                            getattr(runtime.context, "retrieval_no_result_reply", "资料不足") or "资料不足"
+                        )
                         return {"messages": [AIMessage(content=no_result_reply)]}
                     retrieval_context = _build_retrieval_context(kb_results, graph_results)
                     retrieval_citations.extend(_build_retrieval_citations(kb_results, graph_results))

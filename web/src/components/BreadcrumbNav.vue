@@ -28,7 +28,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { ChevronRight, Home, Bot, LibraryBig, Waypoints, Settings, BarChart3, Map } from 'lucide-vue-next'
+import { ChevronRight, Home, Bot, LibraryBig, Waypoints, Settings, BarChart3, Map, BookOpen } from 'lucide-vue-next'
 import { useDatabaseStore } from '@/stores/database'
 
 const route = useRoute()
@@ -37,6 +37,7 @@ const databaseStore = useDatabaseStore()
 // 路由映射配置
 const routeMap = {
   '/agent': { name: '检索', icon: Bot },
+  '/exception-qa': { name: '异常问答', icon: BookOpen },
   '/graph': { name: '知识图谱', icon: Waypoints },
   '/database': { name: '知识库', icon: LibraryBig },
   '/map': { name: '水库地图', icon: Map },

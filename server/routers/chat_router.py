@@ -892,233 +892,6 @@ async def get_message_feedback(
         raise HTTPException(status_code=500, detail=f"Failed to get feedback: {str(e)}")
 
 
-# =============================================================================
-# > === 大坝异常问答分组 ===
-# =============================================================================
-
-
-class DamExceptionQueryRequest(BaseModel):
-    """大坝异常问答请求"""
-    query: str  # 用户问题
-    exception_data: list[dict] | None = None  # 直接传递的异常数据列表（优先使用）
-    exception_api_url: str | None = None  # 可选自定义异常数据API地址
-    exception_api_params: dict | None = None  # 可选API参数
-    agent_id: str | None = None  # 可选指定智能体ID
-    thread_id: str | None = None  # 可选对话线程ID
-    kb_whitelist: list[str] | None = None  # 知识库白名单
-    graph_name: str | None = None  # 知识图谱名称
-    include_repair_suggestions: bool = True  # 是否返回修复建议（默认开启）
-
-
-@chat.post("/dam-exception")
-async def chat_dam_exception(
-    request_data: DamExceptionQueryRequest,
-    current_user: User = Depends(get_required_user),
-    db: Session = Depends(get_db),
-):
-    """大坝异常问答接口 - 使用混合检索回答大坝异常相关问题
-    
-    流程：
-    1. 实时获取大坝监测异常数据
-    2. 解析异常信息，构建上下文
-    3. 结合用户问题和异常上下文
-    4. 使用mix模式进行混合检索回答
-    """
-    start_time = asyncio.get_event_loop().time()
-    
-    query = request_data.query
-    agent_id = request_data.agent_id or conf.default_agent_id
-    thread_id = request_data.thread_id or str(uuid.uuid4())
-    
-    logger.info(f"大坝异常问答: query={query}, agent_id={agent_id}, thread_id={thread_id}")
-    
-    def make_chunk(content=None, **kwargs):
-        return (
-            json.dumps(
-                {"response": content, **kwargs}, ensure_ascii=False
-            ).encode("utf-8")
-            + b"\n"
-        )
-    
-    async def stream_dam_exception_response():
-        # 1. 获取异常数据（优先使用直接传递的数据）
-        if request_data.exception_data:
-            # 直接使用传递的异常数据
-            yield make_chunk(status="using_provided_data", message="正在处理传递的异常数据...")
-            raw_data = request_data.exception_data
-            logger.info(f"使用直接传递的异常数据，共 {len(raw_data)} 条")
-        else:
-            # 从API获取异常数据
-            yield make_chunk(status="fetching_data", message="正在获取大坝监测数据...")
-            
-            try:
-                api_response = await dam_exception_service.fetch_exception_data(
-                    api_url=request_data.exception_api_url,
-                    api_params=request_data.exception_api_params,
-                )
-                
-                raw_data = api_response.get("data", [])
-                if not raw_data:
-                    yield make_chunk(
-                        status="finished",
-                        content="未能获取到监测数据，请检查数据接口是否正常。"
-                    )
-                    return
-                    
-            except ValueError as e:
-                yield make_chunk(status="error", message=str(e))
-                return
-            except Exception as e:
-                logger.error(f"获取异常数据失败: {e}")
-                yield make_chunk(status="error", message=f"获取异常数据失败: {str(e)}")
-                return
-        
-        # 2. 解析异常数据
-        yield make_chunk(status="parsing_data", message="正在分析异常数据...")
-        
-        exceptions = dam_exception_service.parse_exceptions(raw_data)
-        exception_context = dam_exception_service.build_context_for_qa(exceptions)
-        stats = dam_exception_service.get_summary_stats(exceptions)
-        
-        logger.info(f"解析到 {stats['total_count']} 个异常测点")
-        
-        # 3. 构建增强问题（将异常上下文与用户问题结合）
-        repair_instruction = ""
-        if request_data.include_repair_suggestions:
-            repair_instruction = """
-请在回答中包含以下内容：
-1. **异常分析**：分析异常测点的分布规律和可能原因
-2. **风险评估**：评估异常对大坝安全的影响程度
-3. **修复建议**：针对每类异常给出具体的修复或处置建议
-4. **监测建议**：建议后续需要重点关注的测点和监测频率"""
-
-        enhanced_query = f"""请根据以下大坝监测异常数据回答用户问题。
-
-{exception_context}
-
-用户问题：{query}
-{repair_instruction}
-
-请基于以上监测数据进行分析和回答。如果需要额外的背景知识，请结合知识库中的相关内容。回答应当专业、具体、可操作。"""
-        
-        # 4. 直接使用大模型 + 混合检索（不依赖智能体）
-        yield make_chunk(status="reasoning", message="正在进行智能分析...")
-        
-        # 构建运行时配置 - 使用mix模式混合检索
-        user_id = str(current_user.id)
-        retrieval_mode = "mix"  # 强制使用混合检索模式
-        
-        # 从系统配置获取知识库和图谱设置（如果请求中未指定）
-        # 优先使用请求参数，否则从管理员配置读取默认值
-        from server.routers.system_router import load_dam_exception_config
-        admin_config = load_dam_exception_config()
-        
-        kb_whitelist = request_data.kb_whitelist or admin_config.get("kb_whitelist", [])
-        graph_name = request_data.graph_name or admin_config.get("graph_name", "neo4j")
-        
-        # 5. 执行混合检索获取相关知识
-        retrieval_context = ""
-        try:
-            from src.agents.chatbot.graph import _prefetch_retrieval, _build_retrieval_context
-            
-            retrieval_input = {
-                "kb_whitelist": kb_whitelist,
-                "graph_name": graph_name or "neo4j",
-            }
-            
-            if kb_whitelist or graph_name:
-                yield make_chunk(status="retrieving", message="正在检索相关知识...")
-                kb_results, graph_results = await _prefetch_retrieval(
-                    enhanced_query, retrieval_input, retrieval_mode
-                )
-                retrieval_context = _build_retrieval_context(kb_results, graph_results)
-                if retrieval_context:
-                    logger.info(f"检索到相关知识，长度: {len(retrieval_context)}")
-        except Exception as e:
-            logger.warning(f"混合检索失败（将继续无检索回答）: {e}")
-        
-        # 6. 调用大模型生成回答
-        yield make_chunk(status="generating", message="正在生成回答...")
-        
-        try:
-            model = select_model()  # 使用默认模型
-            
-            # 构建消息列表
-            system_prompt = """你是一位专业的大坝安全监测专家，负责分析大坝监测数据并提供专业建议。
-请根据提供的监测数据和相关知识，给出专业、具体、可操作的分析和建议。"""
-            
-            messages_for_model = [
-                {"role": "system", "content": system_prompt}
-            ]
-            
-            # 添加检索到的知识作为上下文
-            if retrieval_context:
-                messages_for_model.append({
-                    "role": "system", 
-                    "content": f"以下是相关的背景知识：\n{retrieval_context}"
-                })
-            
-            # 添加用户问题（包含异常数据）
-            messages_for_model.append({"role": "user", "content": enhanced_query})
-            
-            # 调用模型（流式输出）
-            full_response = ""
-            for chunk in model.call(messages_for_model, stream=True):
-                if hasattr(chunk, 'content') and chunk.content:
-                    full_response += chunk.content
-                    yield make_chunk(
-                        content=chunk.content,
-                        status="loading"
-                    )
-            
-            time_cost = asyncio.get_event_loop().time() - start_time
-            
-            yield make_chunk(
-                status="finished",
-                time_cost=time_cost,
-                exception_stats=stats,
-                thread_id=thread_id,
-            )
-            
-            # Initialize conversation manager and save messages
-            conv_manager = ConversationManager(db)
-            
-            # Save user message
-            try:
-                conv_manager.add_message_by_thread_id(
-                    thread_id=thread_id,
-                    role="user",
-                    content=query,
-                    message_type="text",
-                    extra_metadata={
-                        "raw_message": HumanMessage(content=query).model_dump(),
-                        "exception_stats": stats,
-                        "enhanced_query": enhanced_query,
-                    },
-                )
-            except Exception as e:
-                logger.error(f"保存用户消息失败: {e}")
-            
-            # Save AI response
-            if full_response:
-                try:
-                    conv_manager.add_message_by_thread_id(
-                        thread_id=thread_id,
-                        role="assistant",
-                        content=full_response,
-                        message_type="text",
-                        extra_metadata={"retrieval_mode": retrieval_mode},
-                    )
-                except Exception as e:
-                    logger.error(f"保存AI消息失败: {e}")
-                    
-        except Exception as e:
-            logger.error(f"大模型调用出错: {e}, {traceback.format_exc()}")
-            yield make_chunk(status="error", message=f"智能分析出错: {str(e)}")
-    
-    return StreamingResponse(stream_dam_exception_response(), media_type="application/json")
-
-
 @chat.get("/dam-exception/stats")
 async def get_dam_exception_stats(
     exception_api_url: str = None,
@@ -1129,11 +902,11 @@ async def get_dam_exception_stats(
         api_response = await dam_exception_service.fetch_exception_data(
             api_url=exception_api_url,
         )
-        
+
         raw_data = api_response.get("data", [])
         exceptions = dam_exception_service.parse_exceptions(raw_data)
         stats = dam_exception_service.get_summary_stats(exceptions)
-        
+
         return {
             "success": True,
             "total_points": len(raw_data),
@@ -1143,7 +916,7 @@ async def get_dam_exception_stats(
             "most_severe": stats["most_severe"],
             "exceptions": exceptions[:10],  # 返回前10个最严重的异常
         }
-        
+
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:

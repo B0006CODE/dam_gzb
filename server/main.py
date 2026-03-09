@@ -63,16 +63,16 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         start_time = time.time()
         client_ip = _extract_client_ip(request)
-        
+
         # 记录请求开始
         request_id = f"{int(start_time * 1000)}"
-        
+
         try:
             response = await call_next(request)
-            
+
             # 计算请求时间
             process_time = (time.time() - start_time) * 1000  # ms
-            
+
             # 记录请求日志（仅API请求且非健康检查）
             if request.url.path.startswith("/api") and request.url.path not in ["/api/system/health", "/api"]:
                 log_level = "warning" if response.status_code >= 400 else "info"
@@ -84,11 +84,11 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
                     logger.warning(log_msg)
                 else:
                     logger.info(log_msg)
-            
+
             # 添加响应头
             response.headers["X-Request-ID"] = request_id
             response.headers["X-Process-Time"] = f"{process_time:.2f}ms"
-            
+
             return response
         except Exception as e:
             process_time = (time.time() - start_time) * 1000
@@ -174,7 +174,7 @@ async def stop_tasker() -> None:
 if __name__ == "__main__":
     # 根据环境配置uvicorn参数
     import multiprocessing
-    
+
     # 生产配置
     if IS_PRODUCTION:
         # 生产环境：使用多个workers，禁用reload

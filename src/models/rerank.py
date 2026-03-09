@@ -87,10 +87,10 @@ def rerank_chunks(
 
         # 准备文档列表
         documents = [chunk.get("content", "") for chunk in chunks]
-        
+
         # 计算重排序分数
         scores = reranker.compute_score([query, documents], normalize=True)
-        
+
         # 将分数添加到 chunks 中
         for i, chunk in enumerate(chunks):
             chunk["rerank_score"] = scores[i] if i < len(scores) else 0.0

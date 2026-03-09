@@ -1,4 +1,5 @@
 services:
+  # 生产基线配置（开发模式请叠加 docker-compose.dev.yml）
   api:
     build:
       context: .
@@ -10,11 +11,7 @@ services:
     container_name: smart-water-api
     working_dir: /app
     volumes:
-      - ./server:/app/server
-      - ./src:/app/src
       - ./saves:/app/saves
-      - ./test:/app/test
-      - ./scripts:/app/scripts
       - ./.env:/app/.env
       - ${MODEL_DIR:-./models}:/models  # 使用默认值处理未定义的环境变量
     ports:
@@ -38,10 +35,12 @@ services:
       - MINIO_URI=${MINIO_URI:-http://milvus-minio:9000}
       - MODEL_DIR_IN_DOCKER=/models
       - RUNNING_IN_DOCKER=true
+      - ENV=${ENV:-production}
+      - WORKERS=${WORKERS:-4}
       - NO_PROXY=localhost,127.0.0.1,milvus,graph,milvus-minio,milvus-etcd-dev,etcd,minio,mineru,paddlex
       - no_proxy=localhost,127.0.0.1,milvus,graph,milvus-minio,milvus-etcd-dev,etcd,minio,mineru,paddlex
     # endregion api_envs
-    command: uv run --no-dev uvicorn server.main:app --host 0.0.0.0 --port 5050 --reload
+    command: uv run --no-dev uvicorn server.main:app --host 0.0.0.0 --port 5050 --workers ${WORKERS:-4}
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:5050/api/system/health || exit 1"]
@@ -61,24 +60,24 @@ services:
     build:
       context: .
       dockerfile: docker/web.Dockerfile
-      target: development
+      target: production
     image: smart-water-web:1.0.0
     container_name: smart-water-web
-    volumes:
-      - ./web/src:/app/src
-      - ./web/public:/app/public
-      - ./web/index.html:/app/index.html
-      - ./web/vite.config.js:/app/vite.config.js
     ports:
-      - "5173:5173"
+      - "${WEB_PORT:-80}:80"
     depends_on:
       - api
     networks:
       - app-network
     environment:
-      - NODE_ENV=development
-      - VITE_API_URL=http://api:5050
-    command: pnpm run server
+      - NODE_ENV=production
+      - VITE_API_URL=${VITE_API_URL:-/api}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -T 5 -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
     restart: unless-stopped
 
   # PostgreSQL 服务 - 基于官方推荐的 shangor/postgres-for-rag 镜像
@@ -120,11 +119,15 @@ services:
       - ./docker/volumes/neo4j/data:/data
       - ./docker/volumes/neo4j/logs:/var/lib/neo4j/logs
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:7474 || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "/var/lib/neo4j/bin/cypher-shell -a bolt://localhost:7687 -u ${NEO4J_USERNAME:-neo4j} -p ${NEO4J_PASSWORD:-0123456789} 'RETURN 1;' > /dev/null 2>&1 || exit 1",
+        ]
       interval: 20s
       timeout: 10s
-      retries: 5
-      start_period: 30s
+      retries: 10
+      start_period: 60s
     environment:
       - NEO4J_AUTH=${NEO4J_USERNAME:-neo4j}/${NEO4J_PASSWORD:-0123456789}
       - NEO4J_server_bolt_listen__address=0.0.0.0:7687

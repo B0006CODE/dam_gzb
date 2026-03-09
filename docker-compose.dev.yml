@@ -1,0 +1,28 @@
+services:
+  api:
+    volumes: !override
+      - ./server:/app/server
+      - ./src:/app/src
+      - ./saves:/app/saves
+      - ./test:/app/test
+      - ./scripts:/app/scripts
+      - ./.env:/app/.env
+      - ${MODEL_DIR:-./models}:/models
+    environment:
+      - ENV=development
+    command: uv run --no-dev uvicorn server.main:app --host 0.0.0.0 --port 5050 --reload
+
+  web:
+    build:
+      target: development
+    volumes: !override
+      - ./web/src:/app/src
+      - ./web/public:/app/public
+      - ./web/index.html:/app/index.html
+      - ./web/vite.config.js:/app/vite.config.js
+    ports: !override
+      - "${WEB_PORT:-5173}:5173"
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://api:5050
+    command: pnpm run server

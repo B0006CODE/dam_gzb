@@ -36,6 +36,19 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
+      path: '/exception-qa',
+      name: 'ExceptionQaMain',
+      component: AppLayout,
+      children: [
+        {
+          path: '',
+          name: 'ExceptionQaComp',
+          component: () => import('../views/ExceptionQaView.vue'),
+          meta: { keepAlive: false, requiresAuth: true, requiresAdmin: false }
+        }
+      ]
+    },
+    {
       path: '/graph',
       name: 'graph',
       component: AppLayout,
@@ -119,6 +132,34 @@ router.beforeEach(async (to, from, next) => {
   const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin);
 
   const userStore = useUserStore();
+  const agentStore = useAgentStore();
+  const tokenFromQuery = [to.query.token, to.query.externalToken, to.query.ssoToken]
+    .find(value => typeof value === 'string' && value.trim());
+
+  if (!userStore.isLoggedIn && tokenFromQuery) {
+    try {
+      await userStore.ssoLogin({ token: tokenFromQuery });
+      if (!agentStore.isInitialized) {
+        await agentStore.initialize().catch(() => {});
+      }
+
+      const nextQuery = { ...to.query };
+      delete nextQuery.token;
+      delete nextQuery.externalToken;
+      delete nextQuery.ssoToken;
+
+      next({
+        path: to.path === '/login' ? '/agent' : to.path,
+        query: nextQuery,
+        hash: to.hash,
+        replace: true,
+      });
+      return;
+    } catch (error) {
+      console.error('SSO自动登录失败:', error);
+    }
+  }
+
   const isLoggedIn = userStore.isLoggedIn;
   const isAdmin = userStore.isAdmin;
   if (requiresAuth && !isLoggedIn) {
@@ -128,7 +169,6 @@ router.beforeEach(async (to, from, next) => {
   }
   if (requiresAdmin && !isAdmin) {
     try {
-      const agentStore = useAgentStore();
       if (!agentStore.isInitialized) {
         await agentStore.initialize();
       }

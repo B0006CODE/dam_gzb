@@ -1,0 +1,10 @@
+services:
+  api:
+    environment:
+      - ENV=production
+      - WORKERS=${WORKERS:-4}
+
+  web:
+    environment:
+      - NODE_ENV=production
+      - VITE_API_URL=${VITE_API_URL:-/api}

@@ -4,9 +4,13 @@ Shared pytest fixtures for exercising FastAPI routers over the running API servi
 
 from __future__ import annotations
 
+import hashlib
 import os
+import sqlite3
 import uuid
 from collections.abc import AsyncGenerator
+from datetime import datetime, timezone
+from pathlib import Path
 
 import httpx
 import pytest
@@ -18,14 +22,58 @@ load_dotenv(".env", override=False)
 load_dotenv("test/.env.test", override=False)
 
 API_BASE_URL = os.getenv("TEST_BASE_URL", "http://localhost:5050").rstrip("/")
-ADMIN_LOGIN = os.getenv("TEST_USERNAME")
-ADMIN_PASSWORD = os.getenv("TEST_PASSWORD")
-
-assert ADMIN_LOGIN, "TEST_USERNAME is not set"
-assert ADMIN_PASSWORD, "TEST_PASSWORD is not set"
+_ADMIN_LOGIN_ENV = os.getenv("TEST_USERNAME")
+_ADMIN_PASSWORD_ENV = os.getenv("TEST_PASSWORD")
+ADMIN_LOGIN = _ADMIN_LOGIN_ENV or "pytest_admin"
+ADMIN_PASSWORD = _ADMIN_PASSWORD_ENV or "PytestAdmin!123"
 
 _ADMIN_TOKEN_CACHE: str | None = None
 HTTP_TIMEOUT = httpx.Timeout(30.0, connect=5.0)
+
+
+def _ensure_test_admin_user() -> None:
+    """Create or update a test superadmin account for API integration tests."""
+    save_dir = os.getenv("SAVE_DIR", "saves")
+    db_path = Path(save_dir) / "database" / "server.db"
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+
+    salt = os.urandom(32).hex()
+    password_hash = f"{hashlib.sha256((ADMIN_PASSWORD + salt).encode()).hexdigest()}:{salt}"
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
+
+    with sqlite3.connect(db_path) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id FROM users WHERE user_id = ?", (ADMIN_LOGIN,))
+        row = cursor.fetchone()
+
+        if row:
+            cursor.execute(
+                """
+                UPDATE users
+                SET username = ?,
+                    password_hash = ?,
+                    role = 'superadmin',
+                    is_deleted = 0,
+                    deleted_at = NULL,
+                    login_failed_count = 0,
+                    last_failed_login = NULL,
+                    login_locked_until = NULL
+                WHERE user_id = ?
+                """,
+                (ADMIN_LOGIN, password_hash, ADMIN_LOGIN),
+            )
+        else:
+            cursor.execute(
+                """
+                INSERT INTO users (
+                    username, user_id, password_hash, role, created_at, last_login,
+                    login_failed_count, is_deleted
+                ) VALUES (?, ?, ?, 'superadmin', ?, ?, 0, 0)
+                """,
+                (ADMIN_LOGIN, ADMIN_LOGIN, password_hash, now, now),
+            )
+
+        conn.commit()
 
 
 @pytest_asyncio.fixture(scope="function")
@@ -43,8 +91,8 @@ async def admin_token() -> str:
     if _ADMIN_TOKEN_CACHE:
         return _ADMIN_TOKEN_CACHE
 
-    if not ADMIN_LOGIN or not ADMIN_PASSWORD:
-        pytest.skip("Admin credentials are not configured via environment variables.")
+    if not (_ADMIN_LOGIN_ENV and _ADMIN_PASSWORD_ENV):
+        _ensure_test_admin_user()
 
     async with httpx.AsyncClient(
         base_url=API_BASE_URL, timeout=HTTP_TIMEOUT, follow_redirects=True
@@ -52,6 +100,21 @@ async def admin_token() -> str:
         response = await bootstrap_client.post(
             "/api/auth/token", data={"username": ADMIN_LOGIN, "password": ADMIN_PASSWORD}
         )
+
+        if response.status_code == 401:
+            # Auto-bootstrap a deterministic test admin account when credentials are unknown.
+            _ensure_test_admin_user()
+            response = await bootstrap_client.post(
+                "/api/auth/token", data={"username": ADMIN_LOGIN, "password": ADMIN_PASSWORD}
+            )
+
+        if response.status_code == 429:
+            retry_after = int(response.headers.get("Retry-After", "2"))
+            _ensure_test_admin_user()
+            await asyncio.sleep(max(1, retry_after))
+            response = await bootstrap_client.post(
+                "/api/auth/token", data={"username": ADMIN_LOGIN, "password": ADMIN_PASSWORD}
+            )
 
         if response.status_code == 401:
             first_run_response = await bootstrap_client.get("/api/auth/check-first-run")
@@ -127,12 +190,27 @@ async def knowledge_database(test_client: httpx.AsyncClient, admin_headers: dict
     Create a temporary knowledge database for tests that need LightRAG metadata.
     """
     db_name = f"pytest_kb_{uuid.uuid4().hex[:6]}"
+    embed_model_name = "siliconflow/BAAI/bge-m3"
+
+    config_response = await test_client.get("/api/system/config", headers=admin_headers)
+    if config_response.status_code == 200:
+        config_payload = config_response.json()
+        embed_choices = (
+            config_payload.get("_config_items", {})
+            .get("embed_model", {})
+            .get("choices", [])
+        )
+        if embed_choices:
+            embed_model_name = embed_choices[0]
+        elif config_payload.get("embed_model"):
+            embed_model_name = config_payload["embed_model"]
+
     create_response = await test_client.post(
         "/api/knowledge/databases",
         json={
             "database_name": db_name,
             "description": "Pytest managed knowledge base",
-            "embed_model_name": "siliconflow/BAAI/bge-m3",
+            "embed_model_name": embed_model_name,
             "kb_type": "lightrag",
             "additional_params": {},
         },
@@ -144,7 +222,14 @@ async def knowledge_database(test_client: httpx.AsyncClient, admin_headers: dict
         )
 
     db_payload = create_response.json()
+    if db_payload.get("status") == "failed":
+        pytest.fail(f"Failed to create knowledge database: {db_payload}")
+
+    if "db_id" not in db_payload:
+        pytest.fail(f"Knowledge database payload missing db_id: {db_payload}")
+
     db_id = db_payload["db_id"]
+    db_payload["name"] = db_payload.get("name") or db_name
 
     try:
         yield db_payload

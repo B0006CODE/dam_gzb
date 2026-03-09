@@ -315,7 +315,7 @@ class LightRagKB(KnowledgeBase):
         try:
             # 映射前端模式到 LightRAG 模式
             lightrag_mode = self.MODE_MAPPING.get(mode, "hybrid")
-            
+
             # 设置查询参数
             params_dict = {
                 "mode": lightrag_mode,
@@ -326,17 +326,21 @@ class LightRagKB(KnowledgeBase):
             for k, v in kwargs.items():
                 if k not in ["top_k", "mode"]:
                     params_dict[k] = v
-            
+
             param = QueryParam(**params_dict)
 
             # 执行查询
             response = await rag.aquery(query_text, param)
-            logger.debug(f"Query response with mode {lightrag_mode} (from {mode}): {response[:200] if response else 'empty'}...")
+            response_preview = response[:200] if response else "empty"
+            logger.debug(
+                f"Query response with mode {lightrag_mode} "
+                f"(from {mode}): {response_preview}..."
+            )
 
             # 统一返回格式为 list[dict]，与 Milvus 保持一致
             if not response:
                 return []
-            
+
             # LightRAG 返回的是上下文文本，需要包装成统一格式
             return [{
                 "content": response,

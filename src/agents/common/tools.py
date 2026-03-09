@@ -1,12 +1,12 @@
 import asyncio
 import traceback
-from typing import Annotated, Any
+from typing import Any
 
-from langchain_core.tools import StructuredTool, tool
+from langchain_core.tools import StructuredTool
 # 网页搜索功能已移除，不再需要 TavilySearch
 from pydantic import BaseModel, Field
 
-from src import config, graph_base, knowledge_base
+from src import graph_base, knowledge_base
 from src.utils import logger
 
 
@@ -28,12 +28,32 @@ class GraphStatisticsModel(BaseModel):
 
 # 语义映射：用户术语 -> 实际关系类型
 SEMANTIC_MAPPING = {
-    "病害": ["常见缺陷", "COMMON_DEFECT", "典型病因", "TYPICAL_CAUSE", "主要病因", "MAIN_CAUSE", "存在隐患", "典型缺陷", "TYPICAL_DEFECT"],
+    "病害": [
+        "常见缺陷",
+        "COMMON_DEFECT",
+        "典型病因",
+        "TYPICAL_CAUSE",
+        "主要病因",
+        "MAIN_CAUSE",
+        "存在隐患",
+        "典型缺陷",
+        "TYPICAL_DEFECT",
+    ],
     "缺陷": ["常见缺陷", "COMMON_DEFECT", "典型缺陷", "TYPICAL_DEFECT"],
     "病因": ["典型病因", "TYPICAL_CAUSE", "主要病因", "MAIN_CAUSE"],
     "原因": ["典型病因", "TYPICAL_CAUSE", "主要病因", "MAIN_CAUSE"],
     "隐患": ["存在隐患"],
-    "风险": ["常见缺陷", "COMMON_DEFECT", "典型病因", "TYPICAL_CAUSE", "主要病因", "MAIN_CAUSE", "存在隐患", "典型缺陷", "TYPICAL_DEFECT"],
+    "风险": [
+        "常见缺陷",
+        "COMMON_DEFECT",
+        "典型病因",
+        "TYPICAL_CAUSE",
+        "主要病因",
+        "MAIN_CAUSE",
+        "存在隐患",
+        "典型缺陷",
+        "TYPICAL_DEFECT",
+    ],
     "解决方法": ["处置措施", "TREATMENT_MEASURE", "整改措施"],
     "措施": ["处置措施", "TREATMENT_MEASURE", "整改措施"],
     "处理": ["处置措施", "TREATMENT_MEASURE", "整改措施"],
@@ -85,19 +105,19 @@ def get_static_tools(input_context: dict | None = None) -> list:
         """知识图谱统计工具 - 用于回答统计性问题"""
         try:
             logger.debug(f"统计知识图谱 [{graph_name}] 关键词: {keyword}, 查询类型: {query_type}")
-            
+
             if graph_name != "neo4j":
                 return f"当前图谱({graph_name})暂不支持统计查询，请切换到 Neo4j 图谱后重试。"
 
             if not graph_base.is_running():
                 return "知识图谱数据库未连接，无法进行统计查询。"
-            
+
             graph_base.use_database(graph_name)
-            
+
             # 确定要查询的关系类型
             relation_types_to_query = []
             query_labels = []
-            
+
             # 解析查询类型（支持多种类型如"病害和解决方法"）
             if "全部" in query_type or ("病害" in query_type and ("解决" in query_type or "措施" in query_type)):
                 relation_types_to_query.extend(SEMANTIC_MAPPING.get("病害", []))
@@ -116,18 +136,18 @@ def get_static_tools(input_context: dict | None = None) -> list:
                         relation_types_to_query.extend(values)
                         query_labels.append(key)
                         break
-                
+
                 if not relation_types_to_query:
                     relation_types_to_query.extend(SEMANTIC_MAPPING.get("病害", []))
                     query_labels = ["病害"]
-            
+
             # 去重
             relation_types_to_query = list(set(relation_types_to_query))
-            
+
             with graph_base.driver.session() as session:
                 results_by_type = {}
                 total_count = 0
-                
+
                 for rel_type in relation_types_to_query:
                     if keyword:
                         # 有实体关键词：查询特定实体的相关信息
@@ -146,13 +166,13 @@ def get_static_tools(input_context: dict | None = None) -> list:
                             RETURN DISTINCT m.name as target_entity, r.type as relation_type
                             ORDER BY target_entity
                         """, rel_type=rel_type)
-                    
+
                     entities = []
                     for record in results:
                         entity = record["target_entity"]
                         if entity and entity not in entities:
                             entities.append(entity)
-                    
+
                     if entities:
                         # 将中英文关系类型映射回中文
                         display_type = rel_type
@@ -166,16 +186,16 @@ def get_static_tools(input_context: dict | None = None) -> list:
                             display_type = "处置措施"
                         elif rel_type == "TYPICAL_DEFECT":
                             display_type = "典型缺陷"
-                        
+
                         if display_type not in results_by_type:
                             results_by_type[display_type] = []
                         results_by_type[display_type].extend(entities)
                         total_count += len(entities)
-                
+
                 # 去重每个类型的结果
                 for rel_type in results_by_type:
                     results_by_type[rel_type] = list(dict.fromkeys(results_by_type[rel_type]))
-                
+
                 if not results_by_type:
                     scope = f"'{keyword}'相关的" if keyword else "整个图谱中的"
                     return {
@@ -186,10 +206,10 @@ def get_static_tools(input_context: dict | None = None) -> list:
                         "results_by_type": {},
                         "message": f"未找到{scope}{'/'.join(query_labels)}数据。"
                     }
-                
+
                 # 构建结构化输出
                 scope = f"'{keyword}'相关的" if keyword else "整个图谱中的"
-                
+
                 # 实体名称脱敏处理函数
                 import re
                 def desensitize_text(text):
@@ -219,21 +239,21 @@ def get_static_tools(input_context: dict | None = None) -> list:
 
                 # 同时生成文本摘要供大模型使用
                 output_parts = [
-                    f"【知识图谱统计结果】",
+                    "【知识图谱统计结果】",
                     f"查询范围：{scope}{'/'.join(query_labels)}",
                     f"共找到 {total_type_count} 种不同的{'/'.join(query_labels)}类型",
                     "",
                     "按关系类型分类统计："
                 ]
-                
+
                 for rel_type, entities in sorted(desensitized_results.items(), key=lambda x: len(x[1]), reverse=True):
                     count = len(entities)
                     preview = "、".join(entities[:8])
                     if len(entities) > 8:
-                        preview += f"...等"
+                        preview += "...等"
                     output_parts.append(f"  ▪ {rel_type}：{count} 种")
                     output_parts.append(f"    包括：{preview}")
-                
+
                 return {
                     "query_type": "statistics",
                     "keyword": keyword,
@@ -243,7 +263,7 @@ def get_static_tools(input_context: dict | None = None) -> list:
                     "results_by_type": {k: {"count": len(v), "entities": v} for k, v in desensitized_results.items()},
                     "text_summary": "\n".join(output_parts)
                 }
-                    
+
         except Exception as e:
             logger.error(f"知识图谱统计错误: {e}, {traceback.format_exc()}")
             return f"知识图谱统计查询失败: {str(e)}"
@@ -264,7 +284,9 @@ def get_static_tools(input_context: dict | None = None) -> list:
             "当用户询问'有多少'、'数量是多少'、'统计一下'、'有哪些'等统计性问题时，优先使用此工具。"
             "参数说明：keyword为可选的实体关键词（如'重力坝'），不指定则查询整个图谱；"
             "query_type可选'病害'(常见缺陷/病因)、'解决方法'(处置措施/整改措施)、'全部'、或'病害和解决方法'等组合。"
-            "例如：'有多少种病害'→keyword='', query_type='病害'；'重力坝有多少种病害和解决方法'→keyword='重力坝', query_type='病害和解决方法'；'有哪些风险'→keyword='', query_type='风险'"
+            "例如：'有多少种病害'→keyword='', query_type='病害'；"
+            "'重力坝有多少种病害和解决方法'→keyword='重力坝', query_type='病害和解决方法'；"
+            "'有哪些风险'→keyword='', query_type='风险'"
         ),
         args_schema=GraphStatisticsModel,
         metadata={"graph_name": graph_name, "tag": ["knowledge_graph", "statistics"]},
@@ -387,7 +409,7 @@ def get_hybrid_search_tool(input_context: dict = None) -> list:
             "knowledge_graph_results": [],
             "summary": "",
         }
-        
+
         # 1. 查询所有选中的知识库
         kb_results = []
         retrievers = knowledge_base.get_retrievers()
@@ -400,7 +422,7 @@ def get_hybrid_search_tool(input_context: dict = None) -> list:
                     result = await retriever(query_text, mode="mix")
                 else:
                     result = retriever(query_text, mode="mix")
-                
+
                 if isinstance(result, list):
                     for item in result:
                         item["source_db"] = retriever_info["name"]
@@ -413,19 +435,25 @@ def get_hybrid_search_tool(input_context: dict = None) -> list:
                         "source_db_id": db_id,
                         "score": 1.0,
                     })
-                logger.debug(f"Hybrid search: Retrieved {len(result) if isinstance(result, list) else 1} results from {db_id}")
+                result_count = len(result) if isinstance(result, list) else 1
+                logger.debug(f"Hybrid search: Retrieved {result_count} results from {db_id}")
             except Exception as e:
                 logger.error(f"Hybrid search: Error querying {db_id}: {e}")
-        
+
         results["knowledge_base_results"] = kb_results
-        
+
         # 2. 查询知识图谱
         try:
             if graph_name == "neo4j":
                 # 使用 Neo4j 原生图谱查询（用户上传的图谱）
                 if graph_base.is_running():
                     graph_base.use_database(graph_name)
-                    graph_result = graph_base.query_node(query_text, hops=2, kgdb_name=graph_name, return_format="triples")
+                    graph_result = graph_base.query_node(
+                        query_text,
+                        hops=2,
+                        kgdb_name=graph_name,
+                        return_format="triples",
+                    )
                     if isinstance(graph_result, dict):
                         graph_result["query_type"] = "search"
                         graph_result["query"] = query_text
@@ -440,10 +468,14 @@ def get_hybrid_search_tool(input_context: dict = None) -> list:
                     if lightrag_result:
                         # 将 LightRAG 的图谱结果格式化
                         if isinstance(lightrag_result, list) and len(lightrag_result) > 0:
-                            content = lightrag_result[0].get("content", "") if isinstance(lightrag_result[0], dict) else str(lightrag_result[0])
+                            first_result = lightrag_result[0]
+                            if isinstance(first_result, dict):
+                                content = first_result.get("content", "")
+                            else:
+                                content = str(first_result)
                         else:
                             content = str(lightrag_result)
-                        
+
                         results["knowledge_graph_results"] = {
                             "query_type": "search",
                             "query": query_text,
@@ -458,23 +490,23 @@ def get_hybrid_search_tool(input_context: dict = None) -> list:
         except Exception as e:
             logger.error(f"Hybrid search: Error querying knowledge graph: {e}")
             results["knowledge_graph_results"] = {"error": str(e)}
-        
+
         # 3. 生成摘要
         kb_count = len(kb_results)
         kg_result = results["knowledge_graph_results"]
         if isinstance(kg_result, dict):
             if kg_result.get("graph_type") == "lightrag":
                 kg_count = 1 if kg_result.get("content") else 0
-                kg_desc = f"从 LightRAG 图谱检索到相关内容"
+                kg_desc = "从 LightRAG 图谱检索到相关内容"
             else:
                 kg_count = len(kg_result.get("triples", []))
                 kg_desc = f"从知识图谱检索到 {kg_count} 条相关三元组"
         else:
             kg_count = 0
             kg_desc = "图谱查询未返回结果"
-        
+
         results["summary"] = f"从知识库检索到 {kb_count} 条相关内容，{kg_desc}。"
-        
+
         return results
 
     # 构建工具描述
@@ -484,7 +516,7 @@ def get_hybrid_search_tool(input_context: dict = None) -> list:
         if kb_whitelist and db_id not in kb_whitelist:
             continue
         kb_names.append(retriever_info["name"])
-    
+
     description = (
         "混合检索工具：同时查询知识库和知识图谱，返回综合结果。\n"
         f"将检索的知识库：{', '.join(kb_names) if kb_names else '全部知识库'}\n"

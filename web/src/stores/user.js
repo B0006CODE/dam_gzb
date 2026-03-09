@@ -15,6 +15,38 @@ export const useUserStore = defineStore('user', () => {
   const isAdmin = computed(() => userRole.value === 'superadmin')
   const isSuperAdmin = computed(() => userRole.value === 'superadmin')
 
+  function persistAuthState(data) {
+    token.value = data.access_token
+    userId.value = data.user_id
+    username.value = data.username
+    userIdLogin.value = data.user_id_login
+    avatar.value = data.avatar || ''
+    userRole.value = data.role
+
+    localStorage.setItem('user_token', data.access_token)
+    localStorage.setItem('user_id', data.user_id)
+    localStorage.setItem('username', data.username)
+    localStorage.setItem('user_id_login', data.user_id_login)
+    localStorage.setItem('avatar', data.avatar || '')
+    localStorage.setItem('user_role', data.role)
+  }
+
+  function clearPersistedAuthState() {
+    token.value = ''
+    userId.value = null
+    username.value = ''
+    userIdLogin.value = ''
+    avatar.value = ''
+    userRole.value = ''
+
+    localStorage.removeItem('user_token')
+    localStorage.removeItem('user_id')
+    localStorage.removeItem('username')
+    localStorage.removeItem('user_id_login')
+    localStorage.removeItem('avatar')
+    localStorage.removeItem('user_role')
+  }
+
   // 动作
   async function login(credentials) {
     try {
@@ -43,22 +75,7 @@ export const useUserStore = defineStore('user', () => {
       }
 
       const data = await response.json()
-
-      // 更新状态
-      token.value = data.access_token
-      userId.value = data.user_id
-      username.value = data.username
-      userIdLogin.value = data.user_id_login
-      avatar.value = data.avatar || ''
-      userRole.value = data.role
-
-      // 保存到本地存储
-      localStorage.setItem('user_token', data.access_token)
-      localStorage.setItem('user_id', data.user_id)
-      localStorage.setItem('username', data.username)
-      localStorage.setItem('user_id_login', data.user_id_login)
-      localStorage.setItem('avatar', data.avatar || '')
-      localStorage.setItem('user_role', data.role)
+      persistAuthState(data)
 
       return true
     } catch (error) {
@@ -68,21 +85,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   function logout() {
-    // 清除状态
-    token.value = ''
-    userId.value = null
-    username.value = ''
-    userIdLogin.value = ''
-    avatar.value = ''
-    userRole.value = ''
-
-    // 清除本地存储
-    localStorage.removeItem('user_token')
-    localStorage.removeItem('user_id')
-    localStorage.removeItem('username')
-    localStorage.removeItem('user_id_login')
-    localStorage.removeItem('avatar')
-    localStorage.removeItem('user_role')
+    clearPersistedAuthState()
   }
 
   async function initialize(admin) {
@@ -101,26 +104,35 @@ export const useUserStore = defineStore('user', () => {
       }
 
       const data = await response.json()
-
-      // 更新状态
-      token.value = data.access_token
-      userId.value = data.user_id
-      username.value = data.username
-      userIdLogin.value = data.user_id_login
-      avatar.value = data.avatar || ''
-      userRole.value = data.role
-
-      // 保存到本地存储
-      localStorage.setItem('user_token', data.access_token)
-      localStorage.setItem('user_id', data.user_id)
-      localStorage.setItem('username', data.username)
-      localStorage.setItem('user_id_login', data.user_id_login)
-      localStorage.setItem('avatar', data.avatar || '')
-      localStorage.setItem('user_role', data.role)
+      persistAuthState(data)
 
       return true
     } catch (error) {
       console.error('初始化管理员错误:', error)
+      throw error
+    }
+  }
+
+  async function ssoLogin(payload = {}) {
+    try {
+      const response = await fetch('/api/auth/sso-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}))
+        throw new Error(error.detail || error.message || 'SSO登录失败')
+      }
+
+      const data = await response.json()
+      persistAuthState(data)
+      return data
+    } catch (error) {
+      console.error('SSO登录错误:', error)
       throw error
     }
   }
@@ -368,6 +380,7 @@ export const useUserStore = defineStore('user', () => {
 
     // 方法
     login,
+    ssoLogin,
     logout,
     initialize,
     checkFirstRun,

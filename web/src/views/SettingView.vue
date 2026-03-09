@@ -148,16 +148,36 @@
         <!-- 大坝异常配置部分 -->
         <div v-if="userStore.isAdmin">
           <h3>大坝异常配置</h3>
-          <p>配置大坝异常问答接口的默认知识库、图谱和API设置。</p>
+          <p>配置异常问答公共接口的默认检索方式、知识库、图谱和异常数据 API。</p>
           <div class="section">
+            <div class="card card-select card-select-dam-mode">
+              <div class="dam-mode-copy">
+                <span class="label">默认检索方式</span>
+                <span class="dam-config-hint">{{ damRetrievalHint }}</span>
+              </div>
+              <a-radio-group
+                :value="damConfig.retrieval_mode"
+                button-style="solid"
+                @change="(e) => updateDamConfig('retrieval_mode', e.target.value)"
+              >
+                <a-radio-button
+                  v-for="mode in damRetrievalModes"
+                  :key="mode.value"
+                  :value="mode.value"
+                >
+                  {{ mode.label }}
+                </a-radio-button>
+              </a-radio-group>
+            </div>
             <div class="card card-select">
               <span class="label">知识库白名单</span>
               <a-select
                 style="width: 320px"
                 mode="multiple"
-                placeholder="选择知识库（可多选）"
+                :placeholder="isDamKbEnabled ? '选择知识库（可多选）' : '当前检索方式不使用知识库'"
                 :value="damConfig.kb_whitelist"
                 :loading="damConfigLoading"
+                :disabled="!isDamKbEnabled"
                 @change="(val) => updateDamConfig('kb_whitelist', val)"
               >
                 <a-select-option
@@ -171,9 +191,10 @@
               <span class="label">默认知识图谱</span>
               <a-select
                 style="width: 320px"
-                placeholder="选择图谱"
+                :placeholder="isDamGraphEnabled ? '选择图谱' : '当前检索方式不使用知识图谱'"
                 :value="damConfig.graph_name"
                 :loading="damConfigLoading"
+                :disabled="!isDamGraphEnabled"
                 @change="(val) => updateDamConfig('graph_name', val)"
               >
                 <a-select-option
@@ -336,6 +357,7 @@ const state = reactive({
 
 // 大坝异常配置相关
 const damConfig = reactive({
+  retrieval_mode: 'mix',
   kb_whitelist: [],
   graph_name: 'neo4j',
   exception_api_url: '',
@@ -346,6 +368,17 @@ const damConfigLoading = ref(false)
 const damConfigSaving = ref(false)
 const availableKnowledgeBases = ref([])
 const availableGraphs = ref([])
+const damRetrievalModes = [
+  { value: 'mix', label: '混合检索', hint: '同时检索知识库和知识图谱，适合默认分析场景。' },
+  { value: 'local', label: '知识库检索', hint: '只使用知识库资料生成建议，不查询图谱。' },
+  { value: 'global', label: '知识图谱检索', hint: '只使用知识图谱关系信息，不查询知识库。' },
+  { value: 'llm', label: '纯模型回答', hint: '不做任何检索，只基于异常数据和模型能力回答。' }
+]
+const isDamKbEnabled = computed(() => ['mix', 'local'].includes(damConfig.retrieval_mode))
+const isDamGraphEnabled = computed(() => ['mix', 'global'].includes(damConfig.retrieval_mode))
+const damRetrievalHint = computed(
+  () => damRetrievalModes.find((item) => item.value === damConfig.retrieval_mode)?.hint || ''
+)
 
 const handleModelLocalPathsUpdate = (config) => {
   handleChange('model_local_paths', config)
@@ -462,6 +495,7 @@ const saveDamConfig = async () => {
   damConfigSaving.value = true
   try {
     const result = await damExceptionApi.updateConfig({
+      retrieval_mode: damConfig.retrieval_mode,
       kb_whitelist: damConfig.kb_whitelist,
       graph_name: damConfig.graph_name,
       exception_api_url: damConfig.exception_api_url,
@@ -975,6 +1009,40 @@ const openLink = (url) => {
         padding: 0 8px;
         font-size: smaller;
       }
+    }
+  }
+
+  .card-select-dam-mode {
+    align-items: flex-start;
+    gap: 18px;
+
+    .dam-mode-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 220px;
+    }
+
+    .dam-config-hint {
+      color: var(--gray-600);
+      font-size: 12px;
+      line-height: 1.6;
+      max-width: 420px;
+    }
+
+    :deep(.ant-radio-group) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    :deep(.ant-radio-button-wrapper) {
+      border-radius: 999px;
+      border-inline-start-width: 1px;
+    }
+
+    :deep(.ant-radio-button-wrapper:not(:first-child)::before) {
+      display: none;
     }
   }
 

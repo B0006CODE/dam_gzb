@@ -1,5 +1,8 @@
+import os
 import re
+from typing import Any
 
+import httpx
 from fastapi import APIRouter, Depends, HTTPException, Request, status, UploadFile, File
 from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import BaseModel
@@ -7,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from src.storage.db.manager import db_manager
 from src.storage.db.models import User
-from server.utils.auth_middleware import get_admin_user, get_current_user, get_db, get_required_user
+from server.utils.auth_middleware import get_admin_user, get_db, get_required_user
 from server.utils.auth_utils import AuthUtils
 from server.utils.user_utils import generate_unique_user_id, validate_username
 from server.utils.common_utils import log_operation
@@ -16,6 +19,12 @@ from src.utils.datetime_utils import utc_now
 
 # 创建路由器
 auth = APIRouter(prefix="/auth", tags=["authentication"])
+
+DEFAULT_EXTERNAL_USERINFO_API_URL = os.getenv(
+    "DAM_SSO_USERINFO_API_URL",
+    "https://iiot.cypc.com.cn/damIMonitorApi/yxy/user/getUserInfo",
+)
+DEFAULT_EXTERNAL_USERINFO_TIMEOUT = float(os.getenv("DAM_SSO_USERINFO_TIMEOUT", "15"))
 
 
 # 请求和响应模型
@@ -72,13 +81,19 @@ class UserIdGeneration(BaseModel):
 
 
 class SSOLoginRequest(BaseModel):
-    """SSO登录请求 - 外部系统传递的用户信息"""
-    userName: str
-    fullName: str
+    """SSO登录请求
+
+    兼容两种模式：
+    1. 外部系统直接传完整用户信息
+    2. 仅传 token，由本系统调用外部 getUserInfo 接口补全
+    """
+
     token: str
-    userId: str
-    sn: str
-    roles: list[str]
+    userName: str | None = None
+    fullName: str | None = None
+    userId: str | None = None
+    sn: str | None = None
+    roles: list[str] | None = None
 
 
 class SSOLoginResponse(BaseModel):
@@ -99,7 +114,7 @@ class SSOLoginResponse(BaseModel):
 
 def map_external_roles_to_system_role(roles: list[str]) -> str:
     """将外部系统角色映射为系统角色
-    
+
     规则：
     - 包含「开发用户」或「大坝核心数据管控」-> superadmin
     - 仅「浏览用户」-> user
@@ -108,6 +123,108 @@ def map_external_roles_to_system_role(roles: list[str]) -> str:
     if admin_roles & set(roles):
         return "superadmin"
     return "user"
+
+
+def _normalize_external_user_info(payload: Any, token: str) -> SSOLoginRequest:
+    """将外部用户信息接口响应标准化为 SSO 登录载荷。"""
+    data = payload
+    if isinstance(payload, dict):
+        status_code = payload.get("httpStatusCode")
+        if status_code not in (None, 200):
+            raise ValueError(payload.get("message") or f"获取外部用户信息失败，状态码: {status_code}")
+        nested_data = payload.get("data")
+        if isinstance(nested_data, dict):
+            data = nested_data
+
+    if not isinstance(data, dict):
+        raise ValueError("外部用户信息接口返回格式无效")
+
+    user_name = str(data.get("userName") or data.get("sn") or data.get("userId") or "").strip()
+    full_name = str(data.get("fullName") or data.get("userName") or data.get("userId") or "").strip()
+    user_id = str(data.get("userId") or data.get("sn") or data.get("userName") or "").strip()
+    sn = str(data.get("sn") or user_id or user_name).strip()
+
+    roles_data = data.get("roles") or []
+    roles = [str(role).strip() for role in roles_data if str(role).strip()] if isinstance(roles_data, list) else []
+
+    if not user_id:
+        raise ValueError("外部用户信息缺少 userId")
+    if not full_name:
+        raise ValueError("外部用户信息缺少 fullName")
+
+    return SSOLoginRequest(
+        token=token,
+        userName=user_name or user_id,
+        fullName=full_name,
+        userId=user_id,
+        sn=sn or user_id,
+        roles=roles,
+    )
+
+
+async def fetch_external_user_info(token: str) -> SSOLoginRequest:
+    """使用外部 token 调用正式用户信息接口。"""
+    header_candidates = [
+        {"token": token},
+        {"Authorization": token},
+        {"Authorization": f"Bearer {token}"},
+        {"X-Access-Token": token},
+    ]
+    query_candidates = [
+        None,
+        {"token": token},
+    ]
+    last_error: Exception | None = None
+
+    try:
+        async with httpx.AsyncClient(timeout=DEFAULT_EXTERNAL_USERINFO_TIMEOUT) as client:
+            for headers in header_candidates:
+                for params in query_candidates:
+                    try:
+                        response = await client.get(DEFAULT_EXTERNAL_USERINFO_API_URL, headers=headers, params=params)
+                        response.raise_for_status()
+                        return _normalize_external_user_info(response.json(), token)
+                    except httpx.HTTPStatusError as exc:
+                        last_error = exc
+                        if exc.response.status_code in {401, 403}:
+                            continue
+                        raise ValueError(
+                            f"获取外部用户信息失败，HTTP状态码: {exc.response.status_code}"
+                        ) from exc
+                    except ValueError:
+                        raise
+                    except Exception as exc:
+                        last_error = exc
+                        continue
+    except ValueError:
+        raise
+
+    if last_error:
+        raise ValueError(f"获取外部用户信息失败: {last_error}")
+    raise ValueError("获取外部用户信息失败: 未获得有效响应")
+
+
+async def resolve_sso_login_payload(sso_data: SSOLoginRequest) -> SSOLoginRequest:
+    """补齐 SSO 登录所需字段。"""
+    has_complete_profile = all(
+        [
+            str(sso_data.userName or "").strip(),
+            str(sso_data.fullName or "").strip(),
+            str(sso_data.userId or "").strip(),
+        ]
+    ) and sso_data.roles is not None
+
+    if has_complete_profile:
+        return SSOLoginRequest(
+            token=sso_data.token,
+            userName=str(sso_data.userName).strip(),
+            fullName=str(sso_data.fullName).strip(),
+            userId=str(sso_data.userId).strip(),
+            sn=str(sso_data.sn or sso_data.userId or sso_data.userName).strip(),
+            roles=[str(role).strip() for role in (sso_data.roles or []) if str(role).strip()],
+        )
+
+    return await fetch_external_user_info(sso_data.token)
 
 
 # 路由：登录获取令牌
@@ -200,66 +317,71 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 @auth.post("/sso-login", response_model=SSOLoginResponse)
 async def sso_login(sso_data: SSOLoginRequest, db: Session = Depends(get_db)):
     """外部系统SSO登录接口
-    
+
     接收外部系统传递的用户信息，自动创建或更新用户，生成本系统JWT token。
     直接信任外部已认证的token，不做二次验证。
-    
+
     角色映射规则：
     - 包含「开发用户」或「大坝核心数据管控」-> superadmin（管理员）
     - 仅「浏览用户」-> user（普通用户）
     """
+    try:
+        resolved_sso_data = await resolve_sso_login_payload(sso_data)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail=str(exc)) from exc
+
     # 1. 映射角色
-    system_role = map_external_roles_to_system_role(sso_data.roles)
-    
+    system_role = map_external_roles_to_system_role(resolved_sso_data.roles or [])
+
     # 2. 查找或创建用户（通过external_user_id）
-    user = db.query(User).filter(User.external_user_id == sso_data.userId).first()
-    
+    user = db.query(User).filter(User.external_user_id == resolved_sso_data.userId).first()
+
     if user:
         # 更新已有用户信息
-        user.username = sso_data.fullName
-        user.external_token = sso_data.token
-        user.external_roles = sso_data.roles
+        user.username = resolved_sso_data.fullName
+        user.external_token = resolved_sso_data.token
+        user.external_roles = resolved_sso_data.roles or []
         user.role = system_role
         user.sso_last_login = utc_now()
         user.last_login = utc_now()
         db.commit()
-        
+
         # 记录登录操作
-        log_operation(db, user.id, "SSO登录", f"外部用户ID: {sso_data.userId}")
+        log_operation(db, user.id, "SSO登录", f"外部用户ID: {resolved_sso_data.userId}")
     else:
         # 创建新用户
         # 生成唯一的user_id（用于系统内部登录标识）
         existing_user_ids = [u.user_id for u in db.query(User.user_id).all()]
-        internal_user_id = generate_unique_user_id(sso_data.userName, existing_user_ids)
-        
+        internal_user_id = generate_unique_user_id(resolved_sso_data.userName, existing_user_ids)
+
         # 为SSO用户生成一个随机密码hash（SSO用户不使用密码登录）
         import secrets
         random_password = secrets.token_urlsafe(32)
         password_hash = AuthUtils.hash_password(random_password)
-        
+
         user = User(
-            username=sso_data.fullName,
+            username=resolved_sso_data.fullName,
             user_id=internal_user_id,
             password_hash=password_hash,
             role=system_role,
-            external_user_id=sso_data.userId,
-            external_token=sso_data.token,
-            external_roles=sso_data.roles,
+            external_user_id=resolved_sso_data.userId,
+            external_token=resolved_sso_data.token,
+            external_roles=resolved_sso_data.roles or [],
             sso_last_login=utc_now(),
             last_login=utc_now(),
         )
-        
+
         db.add(user)
         db.commit()
         db.refresh(user)
-        
+
         # 记录创建操作
-        log_operation(db, user.id, "SSO用户创建", f"外部用户ID: {sso_data.userId}, 角色: {system_role}")
-    
+        log_operation(db, user.id, "SSO用户创建", f"外部用户ID: {resolved_sso_data.userId}, 角色: {system_role}")
+
     # 3. 生成本系统JWT token
     token_data = {"sub": str(user.id)}
     access_token = AuthUtils.create_access_token(token_data)
-    
+
     return SSOLoginResponse(
         access_token=access_token,
         token_type="bearer",

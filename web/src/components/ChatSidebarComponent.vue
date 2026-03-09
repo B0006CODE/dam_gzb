@@ -131,7 +131,7 @@
 </template>
 
 <script setup>
-import { computed, h, ref, watch } from 'vue';
+import { computed, h, ref } from 'vue';
 import {
   DeleteOutlined,
   EditOutlined,
@@ -150,7 +150,6 @@ import {
 import { message, Modal } from 'ant-design-vue';
 import { PanelLeftClose, ChevronDown, ChevronRight } from 'lucide-vue-next';
 import CnkiResourceSelector from '@/components/CnkiResourceSelector.vue';
-import { threadApi } from '@/apis/agent_api';
 import dayjs, { parseToShanghai } from '@/utils/time';
 
 const props = defineProps({
@@ -612,6 +611,7 @@ const openAgentModal = () => emit('open-agent-modal');
       overflow-y: auto;
     }
   }
+
 }
 
 /* 滚动条美化 */

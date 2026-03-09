@@ -206,7 +206,7 @@ async def get_subgraph(
                         f"type: {getattr(sample_edge, 'type', 'N/A')}, "
                         f"所有属性: {dir(sample_edge)}")
         else:
-            logger.warning(f"[诊断] LightRAG 返回了 0 条边！这是问题的根源。")
+            logger.warning("[诊断] LightRAG 返回了 0 条边！这是问题的根源。")
         # ====== 诊断日志结束 ======
 
         # 计算分页窗口
@@ -575,7 +575,6 @@ async def add_neo4j_entities(
 ):
     """通过JSONL文件添加图谱实体到Neo4j"""
     from pathlib import Path
-    import os
 
     # 定义允许的上传目录（相对于项目根目录）
     ALLOWED_DIRS = [

@@ -58,8 +58,10 @@ class GraphDatabase:
                 return mapped_name
 
         fallback_name = support_embed_models[0]
+        unsupported_name = self.embed_model_name or config.embed_model
         logger.warning(
-            f"Embedding model '{self.embed_model_name or config.embed_model}' is unsupported, fallback to '{fallback_name}'"
+            f"Embedding model '{unsupported_name}' is unsupported, "
+            f"fallback to '{fallback_name}'"
         )
         return fallback_name
 
@@ -503,7 +505,7 @@ class GraphDatabase:
                 if t not in seen_triples:
                     seen_triples.add(t)
                     dedup_triples.append(t)
-            
+
             # 全局限制三元组数量，避免前端渲染性能问题
             max_triples = 30
             is_truncated = len(dedup_triples) > max_triples
